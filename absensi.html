@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Absensi | PPLG 1</title>
+      <link rel="stylesheet" href="css/absensi.css">
+   </head>
+   <body>
+      <header>
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="attendance.html">Absensi</a></li>
+            </ul>
+         </nav>
+      </header>
+      <main>
+         <section class="attendance-form">
+            <h1>Formulir Absensi</h1>
+            <form id="attendance-form">
+               <div class="field">
+                  <input type="date" id="date" required>
+                  <label for="date">Tanggal</label>
+               </div>
+               <div class="field">
+                  <select id="status" required>
+                     <option value="">Pilih Status</option>
+                     <option value="hadir">Hadir</option>
+                     <option value="izin">Izin</option>
+                     <option value="sakit">Sakit</option>
+                     <option value="tanpa_keterangan">Tanpa Keterangan</option>
+                  </select>
+                  <label for="status">Status</label>
+               </div>
+               <div class="field">
+                  <textarea id="notes" placeholder="Catatan tambahan"></textarea>
+                  <label for="notes">Catatan</label>
+               </div>
+               <div class="field">
+                  <input type="submit" value="Kirim Absensi">
+               </div>
+            </form>
+         </section>
+      </main>
+      <footer>
+         <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
+      </footer>
+      <script src="js/2.js"></script>
+   </body>
+</html>

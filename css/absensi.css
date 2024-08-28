@@ -1,0 +1,49 @@
+/* Styles for Attendance Page */
+.attendance-form {
+    margin: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .attendance-form h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+ }
+ 
+ .attendance-form form {
+    display: flex;
+    flex-direction: column;
+ }
+ 
+ .attendance-form .field {
+    margin-bottom: 15px;
+ }
+ 
+ .attendance-form input,
+ .attendance-form select,
+ .attendance-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-top: 5px;
+ }
+ 
+ .attendance-form input[type="submit"] {
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+ }
+ 
+ .attendance-form input[type="submit"]:hover {
+    background: #e64a19;
+ }
+ 
