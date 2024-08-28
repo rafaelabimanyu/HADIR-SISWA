@@ -143,6 +143,13 @@
          form .signup-link a:hover {
             text-decoration: underline;
          }
+         .date-time {
+            color: #000000;
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            font-size: 14px;
+         }
          
          /* Responsive design */
          @media (max-width: 480px) {
@@ -189,7 +196,12 @@
       <div class="wrapper">
          <div class="title">
             <h3>X PPLG 1</h3>
-            <p>Welcome to the X PPLG 1 student attendance website</p>
+            <hr>
+            <br>
+            <h5>SMK PRESTASI PRIMA</h5>
+            <br>
+            <hr>
+            <p>Welcome to the PPLG 1 class 10 student attendance website</p>
          </div>
          <form action="#">
             <div class="field">
@@ -210,6 +222,29 @@
                <input type="submit" value="Login">
             </div>
          </form>
+         <div class="date-time" id="date-time">
+            <!-- Date and time will be displayed here -->
+         </div>
       </div>
+      <script>
+         function updateDateTime() {
+            const now = new Date();
+            const options = { 
+               weekday: 'long', 
+               year: 'numeric', 
+               month: 'long', 
+               day: 'numeric', 
+               hour: '2-digit', 
+               minute: '2-digit', 
+               second: '2-digit', 
+               timeZone: 'Asia/Jakarta',
+               timeZoneName: 'short'
+            };
+            const dateTimeString = now.toLocaleDateString('id-ID', options);
+            document.getElementById('date-time').textContent = dateTimeString;
+         }
+         setInterval(updateDateTime, 1000); // Update every second
+         updateDateTime(); // Initial call to set the date and time immediately
+      </script>
    </body>
 </html>
