@@ -10,6 +10,7 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #fff8e1; /* Light orange background */
         }
 
         html {
@@ -17,7 +18,7 @@
         }
 
         header {
-            background: #333;
+            background: #e64a19; /* Darker orange background for header */
             color: #fff;
             padding: 10px 0;
         }
@@ -35,18 +36,21 @@
         }
 
         nav ul li a {
-            color: #ffeb3b; /* Warna kontras dengan latar belakang gelap */
+            color: #fff;
             text-decoration: none;
             font-size: 18px;
-            transition: color 0.3s ease;
+            padding: 5px 10px; /* Padding for better alignment */
+            border-radius: 3px; /* Slightly rounded corners */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: #ff9800; /* Warna saat hover untuk efek interaktif */
+            background-color: #fff;
+            color: #e64a19;
         }
 
         .hero {
-            background: linear-gradient(45deg, #ff5722, #ff9800, #ffeb3b);
+            background: linear-gradient(45deg, #ff9800, #ffeb3b, #e64a19);
             background-size: 300% 300%;
             animation: gradientAnimation 10s ease infinite;
             color: #fff;
@@ -71,7 +75,7 @@
         }
 
         .cta-button {
-            background: #ff5722;
+            background: #ff9800;
             color: #fff;
             padding: 10px 20px;
             border-radius: 25px;
@@ -92,7 +96,7 @@
         }
 
         .info-box {
-            background: #f4f4f4;
+            background: #ffe0b2; /* Light orange */
             padding: 20px;
             margin: 10px;
             border-radius: 10px;
@@ -108,26 +112,10 @@
         }
 
         footer {
-            background: #333;
+            background: #e64a19; /* Darker orange background for footer */
             color: #fff;
             text-align: center;
             padding: 10px 0;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        footer a {
-            color: #ffeb3b; /* Warna kontras dengan latar belakang gelap */
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #ff9800; /* Warna saat hover untuk efek interaktif */
         }
 
         /* Modal */
@@ -160,6 +148,27 @@
             font-size: 24px;
             cursor: pointer;
         }
+
+        .article {
+            margin: 50px 20px;
+            padding: 20px;
+            background-color: #fff3e0; /* Very light orange */
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .article h2 {
+            color: #e64a19;
+            margin-bottom: 15px;
+        }
+
+        .article p {
+            color: #333;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -191,6 +200,18 @@
             </div>
         </section>
 
+        <section class="article">
+            <h2>Pentingnya Absensi</h2>
+            <p>Absensi adalah salah satu aspek penting dalam dunia pendidikan. Dengan absensi yang teratur, sekolah dapat memantau kehadiran siswa dan mengambil tindakan yang diperlukan jika ada masalah. Sistem absensi digital memudahkan proses ini, membuatnya lebih efisien dan mudah diakses oleh semua pihak terkait.</p>
+            <p>Absensi yang baik juga mencerminkan kedisiplinan siswa dan membantu menciptakan lingkungan belajar yang kondusif. Oleh karena itu, penting bagi setiap siswa untuk selalu memperhatikan kehadiran mereka di kelas.</p>
+        </section>
+
+        <section class="article">
+            <h2>Motivasi untuk Siswa</h2>
+            <p>Hadir tepat waktu di kelas menunjukkan komitmen dan disiplin Anda sebagai siswa. Jadikan kehadiran di sekolah sebagai kebiasaan yang baik, karena setiap hari yang Anda habiskan di kelas membawa Anda lebih dekat pada pencapaian tujuan akademis dan masa depan Anda.</p>
+            <p>Ingatlah, absensi bukan sekadar formalitas, tetapi bagian penting dari proses belajar yang membantu Anda untuk terus berkembang. Teruslah termotivasi, berusaha, dan ingat bahwa setiap langkah kecil membawa Anda ke arah yang lebih baik.</p>
+        </section>
+
         <!-- Modal Trigger -->
         <a href="#" id="open-modal" class="cta-button">Learn More</a>
 
@@ -206,7 +227,6 @@
 
     <footer>
         <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
-        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 
     <script>
