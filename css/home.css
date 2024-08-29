@@ -53,12 +53,12 @@ nav ul li a {
    font-size: 18px;
    padding: 5px 10px;
    border-radius: 3px;
-   border: 1px solid #e0e0e0;
+   border: 1px solid #FF5722; /* Oranye pada border */
    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-   background-color: #444;
+   background-color: #FF5722; /* Oranye pada hover */
    color: #fff;
 }
 
@@ -74,6 +74,7 @@ nav ul li a:hover {
 .hero h1 {
    font-size: 36px;
    margin-bottom: 15px;
+   color: #FF5722; /* Oranye pada judul */
 }
 
 .hero p {
@@ -103,7 +104,7 @@ nav ul li a:hover {
 
 .class-figure figcaption {
    margin-top: 15px;
-   color: #ccc;
+   color: #FF5722; /* Oranye pada caption */
    font-size: 18px;
 }
 
@@ -118,8 +119,11 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-   background-color: #E64A19; /* Darker shade of accent color */
+   background-color: #E64A19; /* Warna lebih gelap */
+   transform: translateY(-3px); /* Sedikit naik */
+   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih intens */
 }
+
 
 .info {
    display: grid;
@@ -136,6 +140,7 @@ nav ul li a:hover {
    border-radius: 10px;
    text-align: center;
    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   border: 2px solid #FF5722; /* Oranye pada border box */
 }
 
 .info-box:hover {
@@ -155,7 +160,7 @@ nav ul li a:hover {
 
 .article h2 {
    margin-bottom: 20px;
-   color: #FF5722; /* Accent color for headings */
+   color: #FF5722; /* Oranye pada heading artikel */
 }
 
 .article p {
@@ -198,7 +203,7 @@ footer {
 }
 
 .footer-links a:hover {
-   color: #FF5722; /* Accent color */
+   color: #FF5722; /* Oranye pada link hover */
 }
 
 /* Modal Styles */
@@ -226,7 +231,7 @@ footer {
 }
 
 .close {
-   color: #aaa;
+   color: #FF5722; /* Oranye pada ikon close modal */
    float: right;
    font-size: 28px;
    font-weight: bold;
