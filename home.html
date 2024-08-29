@@ -1,52 +1,232 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Home | PPLG 1 Attendance</title>
-      <link rel="stylesheet" href="css/home.css">
-   </head>
-   <body>
-      <header>
-         <nav>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | PPLG 1 Attendance</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffeb3b; /* Warna kontras dengan latar belakang gelap */
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff9800; /* Warna saat hover untuk efek interaktif */
+        }
+
+        .hero {
+            background: linear-gradient(45deg, #ff5722, #ff9800, #ffeb3b);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: #ff5722;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            margin: 50px 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 300px;
+        }
+
+        .info-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ffeb3b; /* Warna kontras dengan latar belakang gelap */
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff9800; /* Warna saat hover untuk efek interaktif */
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
             <ul>
-               <li><a href="home.html">Home</a></li>
-               <li><a href="absensi.html">Absensi</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="absensi.html">Absensi</a></li>
             </ul>
-         </nav>
-      </header>
-      <main>
-         <section class="hero">
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
             <h1>Selamat Datang di Website Absensi</h1>
             <p>Untuk siswa kelas X PPLG 1 SMK Prestasi Prima</p>
             <a href="absensi.html" class="cta-button">Lihat Absensi</a>
-         </section>
-         <section class="info">
+        </section>
+
+        <section class="info">
             <div class="info-box">
-               <h2>Fitur Utama</h2>
-               <p>Kami menyediakan berbagai fitur untuk memudahkan absensi dan manajemen kehadiran siswa.</p>
+                <h2>Fitur Utama</h2>
+                <p>Kami menyediakan berbagai fitur untuk memudahkan absensi dan manajemen kehadiran siswa.</p>
             </div>
             <div class="info-box">
-               <h2>Kontak</h2>
-               <p>Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami melalui email.</p>
+                <h2>Kontak</h2>
+                <p>Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami melalui email.</p>
             </div>
-         </section>
-      </main>
-      <!-- Modal Trigger -->
-<a href="#" id="open-modal" class="cta-button">Learn More</a>
+        </section>
 
-<!-- Modal Structure -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span id="close-modal" class="close">&times;</span>
-        <h2>Informasi Penting</h2>
-        <p>Ini adalah contoh modal window yang dapat digunakan untuk memberikan informasi tambahan kepada pengguna.</p>
-    </div>
-</div>
-      <footer>
-         <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
-      </footer>
+        <!-- Modal Trigger -->
+        <a href="#" id="open-modal" class="cta-button">Learn More</a>
 
-      <script src="js/2.js"></script>
-   </body>
+        <!-- Modal Structure -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">&times;</span>
+                <h2>Informasi Penting</h2>
+                <p>Ini adalah contoh modal window yang dapat digunakan untuk memberikan informasi tambahan kepada pengguna.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Open Modal
+        document.getElementById('open-modal').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('modal').style.display = 'flex';
+        });
+
+        // Close Modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        // Close Modal on Outside Click
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('modal')) {
+                document.getElementById('modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
 </html>
