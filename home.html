@@ -15,8 +15,6 @@
                 <li><a href="absensi.html">Absensi</a></li>
             </ul>
         </nav>
-        <!-- Toggle Button for Dark/Light Mode -->
-        <button id="theme-toggle" class="theme-toggle-button">🌙</button>
     </header>
 
     <main>
@@ -78,7 +76,6 @@
             </ul>
         </div>
     </footer>
-    
 
     <script>
         // Open Modal
@@ -98,33 +95,6 @@
                 document.getElementById('modal').style.display = 'none';
             }
         });
-
-        // Function to toggle dark mode
-        function toggleDarkMode() {
-            const body = document.body;
-            const currentMode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            if (currentMode === 'dark') {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
-                document.getElementById('theme-toggle').textContent = '🌙'; // Moon icon
-            } else {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-                document.getElementById('theme-toggle').textContent = '☀️'; // Sun icon
-            }
-        }
-
-        // Check localStorage for saved theme and apply it
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.classList.add(savedTheme + '-mode');
-            document.getElementById('theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙'; // Set icon based on theme
-        });
-
-        // Add event listener to the toggle button
-        document.getElementById('theme-toggle').addEventListener('click', toggleDarkMode);
     </script>
 </body>
 </html>
