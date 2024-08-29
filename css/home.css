@@ -23,6 +23,42 @@ body {
    color: #e0e0e0;
 }
 
+
+
+/* Heading font */
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600; /* Bold */
+   letter-spacing: 1px; /* Sedikit spasi antar huruf */
+   line-height: 1.2; /* Lebih rapat untuk heading */
+}
+
+/* Paragraph font */
+body, p {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300; /* Light */
+   letter-spacing: 0.5px; /* Spasi antar huruf */
+   line-height: 1.6; /* Lebih lebar untuk keterbacaan */
+}
+
+/* Untuk paragraf */
+p {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300; /* Menggunakan font weight yang ringan */
+   letter-spacing: 0.5px; /* Sedikit jarak antar huruf untuk kejelasan */
+   line-height: 1.6; /* Membuat teks lebih mudah dibaca */
+   margin-bottom: 1.5em; /* Memberikan jarak antar paragraf */
+}
+
+/* Untuk heading */
+h1, h2 {
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600; /* Heading tebal */
+   letter-spacing: 1px; /* Lebih luas jarak antar huruf untuk heading */
+   line-height: 1.2; /* Lebih padat agar heading lebih mencolok */
+}
+
+
 html {
    scroll-behavior: smooth;
 }
@@ -206,6 +242,18 @@ footer {
    color: #FF5722; /* Oranye pada link hover */
 }
 
+/* Keyframes for modal fade-in and scale-in effect */
+@keyframes fadeInScale {
+   from {
+      opacity: 0;
+      transform: scale(0.8);
+   }
+   to {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
 /* Modal Styles */
 .modal {
    display: none;
@@ -218,6 +266,12 @@ footer {
    background-color: rgba(0, 0, 0, 0.7);
    justify-content: center;
    align-items: center;
+   transition: backdrop-filter 0.3s ease; /* Transition for blur effect */
+}
+
+.modal.active {
+   display: flex;
+   backdrop-filter: blur(5px); /* Efek blur pada latar belakang */
 }
 
 .modal-content {
@@ -228,6 +282,8 @@ footer {
    max-width: 600px;
    text-align: center;
    color: #fff;
+   opacity: 0;
+   animation: fadeInScale 0.5s ease-in-out forwards; /* Animasi muncul modal */
 }
 
 .close {
