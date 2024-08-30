@@ -63,43 +63,51 @@ html {
    scroll-behavior: smooth;
 }
 
-/* General Styles for Navbar */
+/* Header Styles */
 header {
    background: #1f1f1f;
    padding: 10px 0;
-   position: relative; /* Tambahkan ini untuk positioning relatif */
+   position: relative;
 }
 
-nav {
+.container {
    display: flex;
-   justify-content: space-between;
    align-items: center;
+   justify-content: space-between;
    max-width: 1200px;
    margin: 0 auto;
    padding: 0 20px;
 }
 
-.logo a {
-   font-size: 24px;
+.logo img {
+   height: 40px;
+}
+
+.logo-text {
+   display: none;
+   font-size: 18px;
    color: #FF5722;
-   text-decoration: none;
    font-family: 'Oswald', sans-serif;
    font-weight: 600;
 }
 
-/* Styles for Nav Menu */
-.nav-menu {
+/* Navbar Styles */
+.navbar {
+   display: flex;
+}
+
+.navbar ul {
    display: flex;
    list-style: none;
    margin: 0;
    padding: 0;
 }
 
-.nav-menu li {
+.navbar ul li {
    margin: 0 15px;
 }
 
-.nav-menu li a {
+.navbar ul li a {
    color: #e0e0e0;
    text-decoration: none;
    font-size: 18px;
@@ -109,19 +117,36 @@ nav {
    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-menu li a:hover {
+.navbar ul li a:hover {
    background-color: #FF5722;
    color: #fff;
 }
 
-/* Hamburger Menu Styles */
-/* Hamburger Menu Styles */
+/* Menu Toggle (Hamburger) Styles */
+.menu-toggle {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   z-index: 1000;
+}
+
+.menu-toggle i {
+   font-size: 24px;
+   color: #FF5722;
+}
+
+.menu-toggle.active i {
+   transform: rotate(90deg);
+}
+
+/* Hamburger Animation */
 .hamburger {
    display: none;
    flex-direction: column;
    cursor: pointer;
    position: relative;
-   z-index: 1000; /* Pastikan hamburger berada di atas elemen lain */
+   z-index: 1000; /* Ensure hamburger is above other elements */
+   transition: transform 0.3s ease; /* Smooth transition */
 }
 
 .hamburger span {
@@ -133,7 +158,6 @@ nav {
    transition: 0.3s;
 }
 
-/* Animation for hamburger menu */
 .hamburger.active span:nth-child(1) {
    transform: rotate(45deg) translate(5px, 5px);
 }
@@ -146,47 +170,51 @@ nav {
    transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Media Query for Responsive Navbar */
+
+
+/* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
-   .nav-menu {
-       position: fixed;
-       top: 0;
-       right: 0;
-       background: #1f1f1f;
-       flex-direction: column;
-       width: 100vw;
-       height: 100vh;
-       overflow: hidden;
-       transition: transform 0.3s ease;
-       transform: translateX(100%);
-       z-index: 999;
-       justify-content: center;
-       align-items: center;
+   .logo-text {
+       display: block;
    }
 
-   .nav-menu.show {
-       transform: translateX(0);
+   .navbar {
+       display: none;
    }
 
-   .nav-menu li {
-       margin: 20px 0;
-   }
-
-   .nav-menu li a {
-       font-size: 24px;
-       padding: 10px 20px;
-   }
-  
-   .hamburger {
+   .menu-toggle {
        display: flex;
    }
 
-   
-}
+   .navbar.show {
+       display: flex;
+       flex-direction: column;
+       position: absolute;
+       top: 60px;
+       right: 0;
+       background: #1f1f1f;
+       width: 100vw;
+       height: calc(100vh - 60px);
+       overflow-y: auto;
+       justify-content: center;
+       align-items: center;
+       z-index: 999;
+   }
 
+   .navbar ul {
+       flex-direction: column;
+   }
 
-/* Media Query for Responsive Navbar */
-@media screen and (max-width: 768px) {
+   .navbar ul li {
+       margin: 20px 0;
+   }
+
+   .navbar ul li a {
+       font-size: 24px;
+       padding: 10px 20px;
+   }
+
+   /* Nav Menu Styles */
    .nav-menu {
        position: fixed;
        top: 0;
@@ -201,7 +229,6 @@ nav {
        z-index: 999;
        justify-content: center; /* Center items vertically */
        align-items: center; /* Center items horizontally */
-       transform: translateX(100%); /* Posisi default (tersembunyi) */
    }
 
    .nav-menu.show {
@@ -209,18 +236,19 @@ nav {
    }
 
    .nav-menu li {
-       margin: 20px 0; /* Adjust margin for spacing */
+       margin: 20px 0;
    }
 
    .nav-menu li a {
-       font-size: 24px; /* Adjust font size if needed */
-       padding: 10px 20px; /* Adjust padding for better click area */
+       font-size: 24px;
+       padding: 10px 20px;
    }
-   
+
    .hamburger {
        display: flex;
    }
 }
+
 
 
 
@@ -265,10 +293,25 @@ nav {
    transition: transform 0.5s ease-in-out;
 }
 
+@keyframes slideIn {
+   0% {
+       opacity: 0;
+       transform: translateX(100%);
+   }
+   100% {
+       opacity: 1;
+       transform: translateX(0);
+   }
+}
+
+/* Slide-in animation for carousel items */
 .carousel-item {
    min-width: 100%;
    box-sizing: border-box;
+   opacity: 0; /* Start with invisible carousel items */
+   animation: slideIn 1s ease-in-out forwards; /* Slide-in animation */
 }
+
 
 .carousel-item img {
    width: 100%;
@@ -379,11 +422,16 @@ nav {
    font-size: 16px;
 }
 
+/* Footer Styles */
 .footer {
    background-color: #1e1e1e; /* Warna latar belakang footer yang gelap */
    color: #f0f0f0; /* Warna teks yang terang */
    padding: 20px 0;
+   position: relative; /* Agar footer-bottom tetap di bawah */
+   display: flex;
+   flex-direction: column; /* Mengatur arah fleksibel ke kolom */
 }
+
 
 .footer .container {
    max-width: 1200px;
@@ -391,10 +439,13 @@ nav {
    padding: 0 15px;
 }
 
+/* Footer Content Styles */
 .footer-content {
    display: flex;
    justify-content: space-between;
    flex-wrap: wrap;
+   margin-bottom: 20px; /* Spasi di bawah footer-content untuk footer-bottom */
+   flex: 1; /* Mengizinkan footer-content untuk mengisi ruang */
 }
 
 .footer-section {
@@ -437,15 +488,20 @@ nav {
    text-decoration: none;
 }
 
+/* Footer Bottom Styles */
 .footer-bottom {
    text-align: center;
-   margin-top: 20px;
+   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
+   border-top: 1px solid #333; /* Tambahkan border untuk pemisah jika diinginkan */
+   padding: 10px 0;
+   background-color: #1e1e1e; /* Warna latar belakang footer-bottom */
 }
 
 .footer-bottom p {
    margin: 0;
    color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
 }
+
 
 
 /* Keyframes for modal fade-in and scale-in effect */

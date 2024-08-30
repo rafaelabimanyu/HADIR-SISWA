@@ -4,16 +4,66 @@ document.addEventListener("DOMContentLoaded", function() {
     const navMenu = document.getElementById('nav-menu');
     const closeBtn = document.querySelector('.close-btn');
 
-    hamburger.addEventListener('click', function() {
-        navMenu.classList.toggle('show');  // Menggunakan kelas 'show' untuk menampilkan menu
-        hamburger.classList.toggle('active');
-    });
+    if (hamburger && navMenu && closeBtn) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('show');  // Toggle menu visibility
+            navMenu.classList.toggle('hide');  // Menambahkan kelas hide untuk animasi
+            hamburger.classList.toggle('active');
+            closeBtn.classList.toggle('show');
+            closeBtn.classList.toggle('hide');
+        });
 
-    closeBtn.addEventListener('click', function() {
-        navMenu.classList.remove('show');  // Menghapus kelas 'show' ketika tombol close diklik
-        hamburger.classList.remove('active');
+        closeBtn.addEventListener('click', function() {
+            navMenu.classList.remove('show');  // Hide menu
+            navMenu.classList.add('hide');  // Menambahkan kelas hide untuk animasi
+            hamburger.classList.remove('active');
+            closeBtn.classList.remove('show');
+            closeBtn.classList.add('hide');
+        });
+    } else {
+        console.error('Required elements not found in the DOM.');
+    }
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Start the fadeIn animation for the hero section
+    document.querySelector('.hero').classList.add('fadeIn');
+
+    // Start the slideIn animation for each carousel item
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    carouselItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.5}s`; // Stagger the animation
+        item.classList.add('slideIn');
     });
 });
+
+function moveSlide(n) {
+    const carousel = document.querySelector('.carousel');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    // Find the current visible item
+    carouselItems.forEach((item, index) => {
+        if (item.style.transform === "translateX(0%)") {
+            currentIndex = index;
+        }
+    });
+
+    // Calculate new index
+    let newIndex = currentIndex + n;
+    if (newIndex >= carouselItems.length) {
+        newIndex = 0;
+    } else if (newIndex < 0) {
+        newIndex = carouselItems.length - 1;
+    }
+
+    // Move to the new slide
+    carousel.style.transform = `translateX(-${newIndex * 100}%)`;
+}
 
 
 let currentIndex = 0;

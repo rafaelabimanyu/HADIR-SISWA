@@ -6,27 +6,32 @@
     <title>Home | PPLG 1 Attendance</title>
     <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
 
-    <header>
-        <nav>
+    <header class="header">
+        <div class="container">
             <div class="logo">
-                <a href="#">X PPLG 1</a>
+                <a href="#"><img src="img/logo2.png" alt="Logo SMK Prestasi Prima"></a>
+                <span class="logo-text">X PPLG 1</span>
             </div>
-            <ul id="nav-menu" class="nav-menu">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">Absensi</a></li>
-                <li><a href="contact.html">Kontak</a></li>
-                <li><a href="index.html">Keluar</a></li>
-            </ul>
-            <div id="hamburger" class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <nav id="nav-menu" class="navbar">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#absensi"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
+                    <li><a href="#contact"><i class="fas fa-address-book"></i> Kontak</a></li>
+                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                </ul>
+                <div class="close-btn"></div>
+            </nav>
+            <div id="hamburger" class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-        </nav>
+        </div>
     </header>
+    
     
     
 
@@ -108,32 +113,33 @@
             <div class="footer-content">
                 <div class="footer-section info">
                     <h4>Kontak</h4>
-                    <p>SMK Prestasi Prima</p>
-                    <p>Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
-                    <p>Email: sekolah@prestasiprima.sch.id</p>
-                    <p>Tel: +6282310261245</p>
+                    <p><i class="fas fa-school"></i> SMK Prestasi Prima</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
+                    <p><i class="fas fa-envelope"></i> Email: sekolah@prestasiprima.sch.id</p>
+                    <p><i class="fas fa-phone-alt"></i> Tel: +6282310261245</p>
                 </div>
                 <div class="footer-section navigation">
                     <h4>Navigasi</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#absensi">Absensi</a></li>
-                        <li><a href="#contact">Kontak</a></li>
-                        <li><a href="index.html">Keluar</a></li>
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#absensi"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
+                        <li><a href="#contact"><i class="fas fa-address-book"></i> Kontak</a></li>
+                        <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                     </ul>
                 </div>
                 <div class="footer-section social">
                     <h4>Ikuti Kami</h4>
-                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon" target="_blank" aria-label="Facebook">F</a>
-                    <a href="https://www.tiktok.com/@smkprestasiprima" class="social-icon" target="_blank" aria-label="TikTok">T</a>
-                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" aria-label="Instagram">I</a>
+                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@smkprestasiprima" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 SMK Prestasi Prima. Semua Hak Cipta Dilindungi.</p>
+                <div class="footer-bottom">
+                    <p>Copyright &copy; 2024 SMK Prestasi Prima. Created By AbiDev.</p>
+                </div>
             </div>
         </div>
     </footer>
+    
     
     
 
