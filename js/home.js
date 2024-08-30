@@ -3,19 +3,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const closeBtn = document.querySelector('.close-btn');
- 
+
     hamburger.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
+        navMenu.classList.toggle('show');  // Menggunakan kelas 'show' untuk menampilkan menu
         hamburger.classList.toggle('active');
     });
- 
+
     closeBtn.addEventListener('click', function() {
-        navMenu.classList.remove('active');
+        navMenu.classList.remove('show');  // Menghapus kelas 'show' ketika tombol close diklik
         hamburger.classList.remove('active');
     });
- });
+});
+
  
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const openModalBtn = document.getElementById('open-modal');
     const closeModalBtn = document.getElementById('close-modal');
     const modal = document.getElementById('modal');
