@@ -176,6 +176,10 @@ nav {
    .hamburger {
        display: flex;
    }
+
+   .close-btn {
+      display: block; /* Ensure close button is visible in responsive mode */
+  }
 }
 
 
