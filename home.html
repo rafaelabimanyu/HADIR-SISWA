@@ -18,7 +18,7 @@
                 <li><a href="home.html">Home</a></li>
                 <li><a href="#">Absensi</a></li>
                 <li><a href="contact.html">Kontak</a></li>
-                <li><a href="#">Keluar</a></li>
+                <li><a href="index.html">Keluar</a></li>
             </ul>
             <div id="hamburger" class="hamburger">
                 <span></span>
@@ -39,19 +39,32 @@
         </section>
 
         <section class="class-info">
-            <figure class="class-figure">
-                <img src="img/TAMPILAN DEPAN HOME.jpeg" alt="Kelas X PPLG 1" class="class-image">
-                <figcaption>Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
-            </figure>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="img/ULTAH SIR WASTONI (1).jpeg" alt="Kelas X PPLG 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/ULTAH SIR WASTONI (2).jpeg" alt="Kelas X PPLG 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/ULTAH SIR WASTONI (3).jpeg" alt="Kelas X PPLG 1">
+                    </div>
+                </div>
+                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <figcaption>Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
         </section>
+        
         
         <section class="info">
             <div class="info-box">
-                <h2>Fitur Utama</h2>
+                <h2 style="color: #FF5722;">Fitur Utama</h2>
                 <p>Kami menyediakan berbagai fitur untuk memudahkan absensi dan manajemen kehadiran siswa.</p>
             </div>
             <div class="info-box">
-                <h2>Kontak</h2>
+                <h2 style="color: #FF5722;">Kontak</h2>
                 <p>Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami melalui email.</p>
             </div>
         </section>
@@ -90,15 +103,39 @@
 
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="privacy.html">Kebijakan Privasi</a></li>
-                <li><a href="contact.html">Kontak</a></li>
-            </ul>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section info">
+                    <h4>Kontak</h4>
+                    <p>SMK Prestasi Prima</p>
+                    <p>Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
+                    <p>Email: sekolah@prestasiprima.sch.id</p>
+                    <p>Tel: +6282310261245</p>
+                </div>
+                <div class="footer-section navigation">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#absensi">Absensi</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="index.html">Keluar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section social">
+                    <h4>Ikuti Kami</h4>
+                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon" target="_blank" aria-label="Facebook">F</a>
+                    <a href="https://twitter.com" class="social-icon" target="_blank" aria-label="Twitter">T</a>
+                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" aria-label="Instagram">I</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SMK Prestasi Prima. Semua Hak Cipta Dilindungi.</p>
+            </div>
         </div>
     </footer>
+    
+    
 
     <script src="js/home.js"></script>
 </body>

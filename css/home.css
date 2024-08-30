@@ -246,11 +246,60 @@ nav {
 
 .class-info {
    display: flex;
-   justify-content: center;
+   flex-direction: column;
+   align-items: center;
    margin: 50px 20px;
-   opacity: 0; /* Start with invisible class-info section */
-   animation: slideInFromLeft 1s ease-in-out 1s forwards; /* Slide-in from left */
+   opacity: 1; /* Start with visible class-info section */
+   position: relative; /* For positioning the buttons */
 }
+
+.carousel-container {
+   position: relative;
+   width: 100%;
+   max-width: 800px; /* Adjust as needed */
+   overflow: hidden;
+}
+
+.carousel {
+   display: flex;
+   transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+   min-width: 100%;
+   box-sizing: border-box;
+}
+
+.carousel-item img {
+   width: 100%;
+   height: auto;
+   display: block;
+}
+
+.carousel-button {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background: none; /* Menghilangkan background */
+   color: #000; /* Warna teks tombol */
+   border: none;
+   font-size: 24px; /* Ukuran font tombol */
+   cursor: pointer;
+   z-index: 10;
+}
+
+
+.prev {
+   left: 10px;
+}
+
+.next {
+   right: 10px;
+}
+
+
+
+
 
 .class-figure {
    text-align: center;
@@ -330,43 +379,74 @@ nav {
    font-size: 16px;
 }
 
-/* Footer Styles */
-footer {
-   background-color: #1f1f1f;
-   color: #e0e0e0;
-   padding: 20px;
-   text-align: center;
-   opacity: 0; /* Start with invisible footer */
-   animation: fadeIn 1s ease-in-out 2.5s forwards; /* Fade-in with delay */
+.footer {
+   background-color: #1e1e1e; /* Warna latar belakang footer yang gelap */
+   color: #f0f0f0; /* Warna teks yang terang */
+   padding: 20px 0;
+}
+
+.footer .container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 15px;
 }
 
 .footer-content {
    display: flex;
-   flex-direction: column;
-   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
 }
 
-.footer-links {
-   list-style: none;
-   margin: 10px 0 0;
-   padding: 0;
-   display: flex;
-   gap: 20px;
+.footer-section {
+   flex: 1;
+   margin: 10px;
 }
 
-.footer-links li {
+.footer-section h4 {
+   margin-bottom: 10px;
+   color: #ff6600; /* Warna heading footer yang kontras */
+}
+
+.footer-section p, .footer-section ul {
    margin: 0;
+   padding: 0;
+   list-style: none;
 }
 
-.footer-links a {
-   color: #e0e0e0;
+.footer-section ul {
+   padding-left: 0;
+}
+
+.footer-section ul li {
+   margin-bottom: 10px;
+}
+
+.footer-section a {
+   color: #f0f0f0; /* Warna link yang terang */
    text-decoration: none;
-   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-   color: #FF5722; /* Oranye pada link hover */
+.footer-section a:hover {
+   color: #ff6600; /* Warna link saat hover */
 }
+
+.social-icon {
+   color: #f0f0f0;
+   font-size: 24px;
+   margin-right: 10px;
+   text-decoration: none;
+}
+
+.footer-bottom {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.footer-bottom p {
+   margin: 0;
+   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
+}
+
 
 /* Keyframes for modal fade-in and scale-in effect */
 @keyframes fadeInScale {
