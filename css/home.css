@@ -67,6 +67,7 @@ html {
 header {
    background: #1f1f1f;
    padding: 10px 0;
+   position: relative; /* Tambahkan ini untuk positioning relatif */
 }
 
 nav {
@@ -114,10 +115,13 @@ nav {
 }
 
 /* Hamburger Menu Styles */
+/* Hamburger Menu Styles */
 .hamburger {
    display: none;
    flex-direction: column;
    cursor: pointer;
+   position: relative;
+   z-index: 1000; /* Pastikan hamburger berada di atas elemen lain */
 }
 
 .hamburger span {
@@ -156,8 +160,48 @@ nav {
        transition: transform 0.3s ease;
        transform: translateX(100%);
        z-index: 999;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .nav-menu.show {
+       transform: translateX(0);
+   }
+
+   .nav-menu li {
+       margin: 20px 0;
+   }
+
+   .nav-menu li a {
+       font-size: 24px;
+       padding: 10px 20px;
+   }
+  
+   .hamburger {
+       display: flex;
+   }
+
+   
+}
+
+
+/* Media Query for Responsive Navbar */
+@media screen and (max-width: 768px) {
+   .nav-menu {
+       position: fixed;
+       top: 0;
+       right: 0;
+       background: #1f1f1f;
+       flex-direction: column;
+       width: 100vw;
+       height: 100vh;
+       overflow: hidden;
+       transition: transform 0.3s ease;
+       transform: translateX(100%);
+       z-index: 999;
        justify-content: center; /* Center items vertically */
        align-items: center; /* Center items horizontally */
+       transform: translateX(100%); /* Posisi default (tersembunyi) */
    }
 
    .nav-menu.show {
@@ -176,10 +220,6 @@ nav {
    .hamburger {
        display: flex;
    }
-
-   .close-btn {
-      display: block; /* Ensure close button is visible in responsive mode */
-  }
 }
 
 
@@ -340,7 +380,6 @@ footer {
    }
 }
 
-/* Modal Styles */
 .modal {
    display: none;
    position: fixed;
@@ -384,4 +423,33 @@ footer {
 .close:focus {
    color: #fff;
    text-decoration: none;
+}
+
+/* Animasi untuk muncul */
+@keyframes fadeInScale {
+   0% {
+       opacity: 0;
+       transform: scale(0.8);
+   }
+   100% {
+       opacity: 1;
+       transform: scale(1);
+   }
+}
+
+/* Animasi untuk hilang */
+@keyframes fadeOutScale {
+   0% {
+       opacity: 1;
+       transform: scale(1);
+   }
+   100% {
+       opacity: 0;
+       transform: scale(0.8);
+   }
+}
+
+/* Tambahan class untuk menyembunyikan modal dengan animasi */
+.modal.hide .modal-content {
+   animation: fadeOutScale 0.5s ease-in-out forwards;
 }
