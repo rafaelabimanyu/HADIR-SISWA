@@ -63,40 +63,117 @@ html {
    scroll-behavior: smooth;
 }
 
+/* General Styles for Navbar */
 header {
    background: #1f1f1f;
-   color: #e0e0e0;
    padding: 10px 0;
-   opacity: 0; /* Start with invisible header */
-   animation: fadeIn 1s ease-in-out forwards; /* Fade-in animation */
 }
 
-nav ul {
+nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+.logo a {
+   font-size: 24px;
+   color: #FF5722;
+   text-decoration: none;
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600;
+}
+
+/* Styles for Nav Menu */
+.nav-menu {
+   display: flex;
    list-style: none;
    margin: 0;
    padding: 0;
-   display: flex;
-   justify-content: center;
 }
 
-nav ul li {
+.nav-menu li {
    margin: 0 15px;
 }
 
-nav ul li a {
+.nav-menu li a {
    color: #e0e0e0;
    text-decoration: none;
    font-size: 18px;
    padding: 5px 10px;
    border-radius: 3px;
-   border: 1px solid #FF5722; /* Oranye pada border */
+   border: 1px solid #FF5722;
    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-nav ul li a:hover {
-   background-color: #FF5722; /* Oranye pada hover */
+.nav-menu li a:hover {
+   background-color: #FF5722;
    color: #fff;
 }
+
+/* Hamburger Menu Styles */
+.hamburger {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+}
+
+.hamburger span {
+   height: 3px;
+   width: 25px;
+   background: #FF5722;
+   margin-bottom: 4px;
+   border-radius: 2px;
+   transition: 0.3s;
+}
+
+/* Animation for hamburger menu */
+.hamburger.active span:nth-child(1) {
+   transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+   opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Media Query for Responsive Navbar */
+@media screen and (max-width: 768px) {
+   .nav-menu {
+       position: absolute;
+       top: 60px;
+       right: 0;
+       background: #1f1f1f;
+       flex-direction: column;
+       width: 100%;
+       max-width: 300px;
+       height: 0;
+       overflow: hidden;
+       transition: height 0.3s ease;
+       border-radius: 0 0 10px 10px;
+       z-index: 999;
+   }
+
+   .nav-menu li {
+       text-align: center;
+       margin: 10px 0;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+
+   .nav-menu.show {
+       height: auto;
+       padding: 10px 0;
+   }
+}
+
 
 .hero {
    background: linear-gradient(135deg, rgba(68, 68, 68, 0.8), rgba(85, 85, 85, 0.8)), url('img/hero-background.jpg') no-repeat center center/cover;
