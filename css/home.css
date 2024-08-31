@@ -79,17 +79,26 @@ header {
    padding: 0 20px;
 }
 
+/* Container for logo and text */
+.logo {
+   display: flex;
+   align-items: center;
+}
+
 .logo img {
    height: 40px;
+   margin-right: 10px; /* Menambahkan jarak antara logo dan teks */
 }
 
 .logo-text {
-   display: none;
+   display: block; /* Pastikan teks selalu ditampilkan */
    font-size: 18px;
    color: #FF5722;
    font-family: 'Oswald', sans-serif;
    font-weight: 600;
 }
+
+
 
 /* Navbar Styles */
 .navbar {
@@ -115,6 +124,10 @@ header {
    border-radius: 3px;
    border: 1px solid #FF5722;
    transition: background-color 0.3s ease, color 0.3s ease;
+   -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+   -moz-transition: background-color 0.3s ease, color 0.3s ease;
+   -ms-transition: background-color 0.3s ease, color 0.3s ease;
+   -o-transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li a:hover {
@@ -135,10 +148,6 @@ header {
    color: #FF5722;
 }
 
-.menu-toggle.active i {
-   transform: rotate(90deg);
-}
-
 /* Hamburger Animation */
 .hamburger {
    display: none;
@@ -146,7 +155,6 @@ header {
    cursor: pointer;
    position: relative;
    z-index: 1000; /* Ensure hamburger is above other elements */
-   transition: transform 0.3s ease; /* Smooth transition */
 }
 
 .hamburger span {
@@ -155,9 +163,10 @@ header {
    background: #FF5722;
    margin-bottom: 4px;
    border-radius: 2px;
-   transition: 0.3s;
+   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
+/* Animation when active */
 .hamburger.active span:nth-child(1) {
    transform: rotate(45deg) translate(5px, 5px);
 }
@@ -169,6 +178,22 @@ header {
 .hamburger.active span:nth-child(3) {
    transform: rotate(-45deg) translate(5px, -5px);
 }
+
+.hamburger.active span {
+   background-color: #fff; /* Optionally change color when active */
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+   .menu-toggle {
+       display: flex;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+}
+
 
 
 
@@ -212,6 +237,7 @@ header {
    .navbar ul li a {
        font-size: 24px;
        padding: 10px 20px;
+       border: none;
    }
 
    /* Nav Menu Styles */
