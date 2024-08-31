@@ -87,7 +87,12 @@ header {
 
 .logo img {
    height: 40px;
+   width: 40px; /* Pastikan gambar berbentuk persegi */
    margin-right: 10px; /* Menambahkan jarak antara logo dan teks */
+   background-color: #ffffff; /* Warna putih untuk background */
+   border-radius: 50%; /* Membuat background menjadi bulat */
+   overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari border */
+   object-fit: cover; /* Memastikan gambar memenuhi area */
 }
 
 .logo-text {
@@ -97,6 +102,9 @@ header {
    font-family: 'Oswald', sans-serif;
    font-weight: 600;
 }
+
+
+
 
 
 
