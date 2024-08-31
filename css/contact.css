@@ -15,38 +15,225 @@ body {
     line-height: 1.2;
  }
  
- header {
-    background: #1f1f1f;
-    color: #e0e0e0;
-    padding: 10px 0;
- }
- 
- nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
- }
- 
- nav ul li {
-    margin: 0 15px;
- }
- 
- nav ul li a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    border: 1px solid #FF5722;
-    transition: background-color 0.3s ease, color 0.3s ease;
- }
- 
- nav ul li a:hover {
-    background-color: #FF5722;
-    color: #fff;
- }
+ /* Header Styles */
+header {
+   background: #1f1f1f;
+   padding: 10px 0;
+   position: relative;
+}
+
+.container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+/* Container for logo and text */
+.logo {
+   display: flex;
+   align-items: center;
+}
+
+.logo img {
+   height: 40px;
+   width: 40px; /* Pastikan gambar berbentuk persegi */
+   margin-right: 10px; /* Menambahkan jarak antara logo dan teks */
+   background-color: #ffffff; /* Warna putih untuk background */
+   border-radius: 50%; /* Membuat background menjadi bulat */
+   overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari border */
+   object-fit: cover; /* Memastikan gambar memenuhi area */
+}
+
+.logo-text {
+   display: block; /* Pastikan teks selalu ditampilkan */
+   font-size: 18px;
+   color: #FF5722;
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600;
+}
+
+
+
+
+
+
+/* Navbar Styles */
+.navbar {
+   display: flex;
+}
+
+.navbar ul {
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.navbar ul li {
+   margin: 0 15px;
+}
+
+.navbar ul li a {
+   color: #e0e0e0;
+   text-decoration: none;
+   font-size: 18px;
+   padding: 5px 10px;
+   border-radius: 3px;
+   border: 1px solid #FF5722;
+   transition: background-color 0.3s ease, color 0.3s ease;
+   -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+   -moz-transition: background-color 0.3s ease, color 0.3s ease;
+   -ms-transition: background-color 0.3s ease, color 0.3s ease;
+   -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+   background-color: #FF5722;
+   color: #fff;
+}
+
+/* Menu Toggle (Hamburger) Styles */
+.menu-toggle {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   z-index: 1000;
+}
+
+.menu-toggle i {
+   font-size: 24px;
+   color: #FF5722;
+}
+
+/* Hamburger Animation */
+.hamburger {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   position: relative;
+   z-index: 1000; /* Ensure hamburger is above other elements */
+}
+
+.hamburger span {
+   height: 3px;
+   width: 25px;
+   background: #FF5722;
+   margin-bottom: 4px;
+   border-radius: 2px;
+   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animation when active */
+.hamburger.active span:nth-child(1) {
+   transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+   opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hamburger.active span {
+   background-color: #fff; /* Optionally change color when active */
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+   .menu-toggle {
+       display: flex;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+}
+
+
+
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+   .logo-text {
+       display: block;
+   }
+
+   .navbar {
+       display: none;
+   }
+
+   .menu-toggle {
+       display: flex;
+   }
+
+   .navbar.show {
+       display: flex;
+       flex-direction: column;
+       position: absolute;
+       top: 60px;
+       right: 0;
+       background: #1f1f1f;
+       width: 100vw;
+       height: calc(100vh - 60px);
+       overflow-y: auto;
+       justify-content: center;
+       align-items: center;
+       z-index: 999;
+   }
+
+   .navbar ul {
+       flex-direction: column;
+   }
+
+   .navbar ul li {
+       margin: 20px 0;
+   }
+
+   .navbar ul li a {
+       font-size: 24px;
+       padding: 10px 20px;
+       border: none;
+   }
+
+   /* Nav Menu Styles */
+   .nav-menu {
+       position: fixed;
+       top: 0;
+       right: 0;
+       background: #1f1f1f;
+       flex-direction: column;
+       width: 100vw;
+       height: 100vh;
+       overflow: hidden;
+       transition: transform 0.3s ease;
+       transform: translateX(100%);
+       z-index: 999;
+       justify-content: center; /* Center items vertically */
+       align-items: center; /* Center items horizontally */
+   }
+
+   .nav-menu.show {
+       transform: translateX(0);
+   }
+
+   .nav-menu li {
+       margin: 20px 0;
+   }
+
+   .nav-menu li a {
+       font-size: 24px;
+       padding: 10px 20px;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+}
  
  .contact-hero {
     background: linear-gradient(135deg, rgba(68, 68, 68, 0.8), rgba(85, 85, 85, 0.8)), url('img/contact-background.jpg') no-repeat center center/cover;
@@ -164,32 +351,82 @@ body {
 }
 
  
- footer {
-    background-color: #1f1f1f;
-    color: #e0e0e0;
-    padding: 20px;
-    text-align: center;
- }
- 
- .footer-links {
-    list-style: none;
-    margin: 10px 0 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
- }
- 
- .footer-links li {
-    margin: 0;
- }
- 
- .footer-links a {
-    color: #e0e0e0;
-    text-decoration: none;
-    transition: color 0.3s ease;
- }
- 
- .footer-links a:hover {
-    color: #FF5722;
- }
- 
+ /* Footer Styles */
+.footer {
+   background-color: #1e1e1e; /* Warna latar belakang footer yang gelap */
+   color: #f0f0f0; /* Warna teks yang terang */
+   padding: 20px 0;
+   position: relative; /* Agar footer-bottom tetap di bawah */
+   display: flex;
+   flex-direction: column; /* Mengatur arah fleksibel ke kolom */
+}
+
+
+.footer .container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+/* Footer Content Styles */
+.footer-content {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   margin-bottom: 20px; /* Spasi di bawah footer-content untuk footer-bottom */
+   flex: 1; /* Mengizinkan footer-content untuk mengisi ruang */
+}
+
+.footer-section {
+   flex: 1;
+   margin: 10px;
+}
+
+.footer-section h4 {
+   margin-bottom: 10px;
+   color: #ff6600; /* Warna heading footer yang kontras */
+}
+
+.footer-section p, .footer-section ul {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.footer-section ul {
+   padding-left: 0;
+}
+
+.footer-section ul li {
+   margin-bottom: 10px;
+}
+
+.footer-section a {
+   color: #f0f0f0; /* Warna link yang terang */
+   text-decoration: none;
+}
+
+.footer-section a:hover {
+   color: #ff6600; /* Warna link saat hover */
+}
+
+.social-icon {
+   color: #f0f0f0;
+   font-size: 24px;
+   margin-right: 10px;
+   text-decoration: none;
+}
+
+/* Footer Bottom Styles */
+.footer-bottom {
+   text-align: center;
+   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
+   border-top: 1px solid #333; /* Tambahkan border untuk pemisah jika diinginkan */
+   padding: 10px 0;
+   background-color: #1e1e1e; /* Warna latar belakang footer-bottom */
+}
+
+.footer-bottom p {
+   margin: 0;
+   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
+}

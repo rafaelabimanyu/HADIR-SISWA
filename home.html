@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
 
@@ -21,20 +20,16 @@
                 <ul>
                     <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#absensi"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
-                    <li><a href="#contact"><i class="fas fa-address-book"></i> Kontak</a></li>
+                    <li><a href="contact.html"><i class="fas fa-address-book"></i> Kontak</a></li>
                     <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                 </ul>
                 <div class="close-btn"></div>
             </nav>
-            <div id="hamburger" class="menu-toggle">
+            <div id="hamburger" class="menu-toggle" aria-label="Menu Toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
-    
-    
-    
-    
 
     <main>
         <section class="hero">
@@ -57,13 +52,12 @@
                         <img src="img/ULTAH SIR WASTONI (3).jpeg" alt="Kelas X PPLG 1">
                     </div>
                 </div>
-                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+                <button class="carousel-button prev" onclick="moveSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+                <button class="carousel-button next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
             </div>
             <figcaption>Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
         </section>
-        
-        
+
         <section class="info">
             <div class="info-box">
                 <h2 style="color: #FF5722;">Fitur Utama</h2>
@@ -91,21 +85,19 @@
         <a href="#" id="open-modal" class="cta-button">Learn More</a>
 
         <!-- Modal Structure -->
-<!-- Modal Structure -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span id="close-modal" class="close">&times;</span>
-        <h2>Informasi Penting</h2>
-        <ul>
-            <li><strong>Jadwal Pelajaran:</strong> Cek jadwal terbaru secara rutin, karena bisa berubah sewaktu-waktu. Absensi sesuai jadwal.</li>
-            <li><strong>Absensi:</strong> Hadir tepat waktu. Jika sakit atau berhalangan, beri tahu wali kelas dengan surat keterangan.</li>
-            <li><strong>Peraturan:</strong> Patuhi aturan sekolah, terutama soal kehadiran. Keterlambatan atau absen tanpa keterangan mempengaruhi penilaian.</li>
-            <li><strong>Kedisiplinan:</strong> Absensi menunjukkan komitmen dan disiplin Anda sebagai siswa.</li>
-            <li><strong>Komunikasi:</strong> Hubungi guru atau wali kelas jika ada masalah terkait kehadiran.</li>
-        </ul>
-    </div>
-</div>
-
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close" aria-label="Close Modal">&times;</span>
+                <h2>Informasi Penting</h2>
+                <ul>
+                    <li><strong>Jadwal Pelajaran:</strong> Cek jadwal terbaru secara rutin, karena bisa berubah sewaktu-waktu. Absensi sesuai jadwal.</li>
+                    <li><strong>Absensi:</strong> Hadir tepat waktu. Jika sakit atau berhalangan, beri tahu wali kelas dengan surat keterangan.</li>
+                    <li><strong>Peraturan:</strong> Patuhi aturan sekolah, terutama soal kehadiran. Keterlambatan atau absen tanpa keterangan mempengaruhi penilaian.</li>
+                    <li><strong>Kedisiplinan:</strong> Absensi menunjukkan komitmen dan disiplin Anda sebagai siswa.</li>
+                    <li><strong>Komunikasi:</strong> Hubungi guru atau wali kelas jika ada masalah terkait kehadiran.</li>
+                </ul>
+            </div>
+        </div>
 
     </main>
 
@@ -133,23 +125,20 @@
                         <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                     </ul>
                 </div>
-                <div class="footer-section social">
-                    <h4>Ikuti Kami</h4>
-                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@smkprestasiprima" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <div class="footer-section social-media">
+                    <h4>Social Media</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/smkprestasiprima"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.tiktok.com/@smkprestasiprima"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                        <li><a href="https://www.instagram.com/smkprestasiprima"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
-                
-                <div class="footer-bottom">
-                    <p>Copyright &copy; 2024 SMK Prestasi Prima. Created By AbiDev.</p>
-                </div>
+                <p class="footer-bottom">&copy; 2024 SMK Prestasi Prima. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
-    
-    
-    
 
+    <!-- JavaScript Files -->
     <script src="js/home.js"></script>
 </body>
 </html>
