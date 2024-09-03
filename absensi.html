@@ -1,51 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>PPLG 1 Attendance</title>
-      <link rel="stylesheet" href="css/absensi.css">
-   </head>
-   <body>
-      <header>
-         <nav>
-            <ul>
-               <li><a href="index.html">Home</a></li>
-               <li><a href="absensi.html">Absensi</a></li>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Siswa Kelas X PPLG 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/absensi.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SMK PRESTASI PRIMA - X PPLG 1</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Absensi</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Keluar</a></li>
             </ul>
-         </nav>
-      </header>
-      <main>
-         <section class="attendance-form">
-            <h1>Formulir Absensi</h1>
-            <form id="attendance-form">
-               <div class="field">
-                  <input type="date" id="date" required>
-                  <label for="date">Tanggal</label>
-               </div>
-               <div class="field">
-                  <select id="status" required>
-                     <option value="">Pilih Status</option>
-                     <option value="hadir">Hadir</option>
-                     <option value="izin">Izin</option>
-                     <option value="sakit">Sakit</option>
-                     <option value="tanpa_keterangan">Tanpa Keterangan</option>
-                  </select>
-                  <label for="status">Status</label>
-               </div>
-               <div class="field">
-                  <textarea id="notes" placeholder="Catatan tambahan"></textarea>
-                  <label for="notes">Catatan</label>
-               </div>
-               <div class="field">
-                  <input type="submit" value="Kirim Absensi">
-               </div>
-            </form>
-         </section>
-      </main>
-      <footer>
-         <p>&copy; 2024 SMK Prestasi Prima. All rights reserved.</p>
-      </footer>
-      <script src="js/2.js"></script>
-   </body>
+        </nav>
+    </header>
+    
+    
+
+    <main>
+        <section class="absensi">
+            <h2>Absensi Siswa</h2>
+            <form id="absensi-form">
+               <label for="nama">Nama Siswa:</label>
+               <input type="text" id="nama" name="nama" required>
+               <span id="nama-error" class="error-message"></span>
+           
+               <label for="keterangan">Keterangan:</label>
+               <select id="keterangan" name="keterangan" required>
+                   <option value="hadir">Hadir</option>
+                   <option value="izin">Izin</option>
+                   <option value="sakit">Sakit</option>
+                   <option value="tanpa_keterangan">Tanpa Keterangan</option>
+               </select>
+           
+               <button type="submit">Submit</button>
+           </form>
+           
+        </section>
+
+        <section class="data-siswa">
+            <h2>Data Absensi Siswa</h2>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Keterangan</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data siswa akan ditambahkan di sini -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>SMK PRESTASI PRIMA</h2>
+                <p>Kelas X PPLG 1</p>
+            </div>
+            <div class="footer-nav">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Absensi</a></li>
+                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#">Keluar</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Kontak</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
+                <p><i class="fas fa-envelope"></i> Email: sekolah@prestasiprima.sch.id</p>
+                <p><i class="fas fa-phone"></i> +6282310261245</p>
+            </div>
+            <div class="footer-social">
+                <h3>Ikuti Kami</h3>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SMK PRESTASI PRIMA. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+
+    <script src="js/2.js"></script>
+</body>
 </html>
