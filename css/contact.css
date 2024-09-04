@@ -280,6 +280,8 @@ header {
 
 .form-group {
    margin-bottom: 20px;
+   display: flex;
+   flex-direction: column;
 }
 
 .form-group label {
@@ -316,6 +318,14 @@ header {
    cursor: pointer;
    border: none;
 }
+
+@media screen and (max-width: 480px) {
+   .cta-button {
+      padding: 8px 16px;
+      font-size: 14px;
+   }
+}
+
 
 .cta-button:hover {
    background-color: #E64A19;
@@ -541,6 +551,13 @@ header {
    margin-right: 10px;
    text-decoration: none;
 }
+
+.social-icon:hover {
+   color: #FF5722;
+   transform: scale(1.1);
+   transition: color 0.3s ease, transform 0.3s ease;
+}
+
 
 .footer-bottom {
    text-align: center;
