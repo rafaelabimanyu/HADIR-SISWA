@@ -188,8 +188,7 @@ header {
 }
 
 .hamburger.active span {
-   background-color: #fff; /* Optionally change color when active *
-   /
+   background-color: #fff; /* Optionally change color when active */
 }
 
 /* Media Queries for Responsive Design */
