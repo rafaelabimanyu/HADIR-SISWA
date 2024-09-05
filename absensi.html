@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Absensi Siswa Kelas X PPLG 1</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Absensi Siswa</title>
     <link rel="stylesheet" href="css/absensi.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">SMK PRESTASI PRIMA - X PPLG 1</div>
+            <div class="logo">SMK Prestasi Prima</div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Absensi</a></li>
-                <li><a href="#">Kontak</a></li>
-                <li><a href="#">Keluar</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="absensi.html">Absensi</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li><a href="index.html">Keluar</a></li>
             </ul>
         </nav>
     </header>
-    
-    
 
     <main>
         <section class="absensi">
-            <h2>Absensi Siswa</h2>
+            <h2>Form Absensi Siswa</h2>
             <form id="absensi-form">
-               <label for="nama">Nama Siswa:</label>
-               <input type="text" id="nama" name="nama" required>
-               <span id="nama-error" class="error-message"></span>
-           
-               <label for="keterangan">Keterangan:</label>
-               <select id="keterangan" name="keterangan" required>
-                   <option value="hadir">Hadir</option>
-                   <option value="izin">Izin</option>
-                   <option value="sakit">Sakit</option>
-                   <option value="tanpa_keterangan">Tanpa Keterangan</option>
-               </select>
-           
-               <button type="submit">Submit</button>
-           </form>
-           
+                <label for="nama">Nama Siswa:</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama siswa">
+                <p id="nama-error" style="color: red;"></p>
+
+                <label for="keterangan">Keterangan:</label>
+                <select id="keterangan" name="keterangan">
+                    <option value="Hadir">Hadir</option>
+                    <option value="Izin">Izin</option>
+                    <option value="Sakit">Sakit</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
         </section>
 
         <section class="data-siswa">
@@ -51,10 +46,11 @@
                         <th>Nama</th>
                         <th>Keterangan</th>
                         <th>Tanggal</th>
+                        <th>Jam</th> <!-- Tambahan kolom Jam -->
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Data siswa akan ditambahkan di sini -->
+                    <!-- Data absensi akan ditambahkan di sini -->
                 </tbody>
             </table>
         </section>
@@ -63,40 +59,24 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section info">
-                    <h4>Kontak Kelas</h4>
-                    <p><i class="fas fa-envelope"></i> Email: 10.pplg1.smkpresma@gmail.com</p>
-                    <p><i class="fas fa-phone-alt"></i> Telp: +6282310261245</p>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <p>Alamat: Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
+                    <p>Email: sekolah@prestasiprima.sch.id</p>
+                    <p> Telp: +6282310261245</p>
                 </div>
-                <div class="footer-section info">
-                    <h4>Kontak Sekolah</h4>
-                    <p><i class="fas fa-school"></i> SMK Prestasi Prima</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Jl. Hankam Raya No.89, RT.7/RW.4, Cilangkap, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13870</p>
-                    <p><i class="fas fa-envelope"></i> Email: sekolah@prestasiprima.sch.id</p>
-                    <p><i class="fas fa-phone-alt"></i> Telp: +6282310261245</p>
+                <div class="footer-section">
+                    <h4>Sosial Media</h4>
+                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon">Facebook</a>
+                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon">Instagram</a>
+                    <a href="https://www.tiktok.com/@smkprestasiprima" class="social-icon">TikTok</a>
                 </div>
-                <div class="footer-section navigation">
-                    <h4>Navigasi</h4>
-                    <ul>
-                        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="absensi.html"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
-                        <li><a href="contact.html"><i class="fas fa-address-book"></i> Kontak</a></li>
-                        <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section social">
-                    <h4>Ikuti Kami</h4>
-                    <a href="https://www.instagram.com/smkprestasiprima?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@smkprestasiprima" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.facebook.com/p/SMK-Prestasi-PRIMA-100035392916117/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                </div>
-                <div class="footer-bottom">
-                    <p>Copyright &copy; 2024 SMK Prestasi Prima. Created By AbiDev.</p>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SMK Prestasi Prima | All Rights Reserved</p>
             </div>
         </div>
     </footer>
-    
 
     <script src="js/2.js"></script>
 </body>
