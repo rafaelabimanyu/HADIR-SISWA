@@ -1,0 +1,176 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menambahkan lebih banyak padding pada header */
+header {
+    background-color: #333;
+    padding: 20px 40px; /* Sebelumnya 10px 20px */
+    color: #fff;
+    margin-bottom: 20px; /* Jarak lebih besar dengan elemen berikutnya */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px; /* Menambah jarak antar link */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px; /* Memperbesar area klik */
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #ff6600;
+}
+
+main {
+    padding: 40px; /* Memperbesar padding pada konten utama */
+}
+
+/* Menambahkan lebih banyak margin antara elemen absensi dan data siswa */
+.absensi, .data-siswa {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 30px; /* Sebelumnya 20px */
+    padding: 30px; /* Lebih banyak padding */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Membuat shadow lebih jelas */
+}
+
+.absensi h2, .data-siswa h2 {
+    color: #ff6600;
+    margin-bottom: 20px; /* Menambah jarak dengan konten di bawahnya */
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px; /* Menambah jarak antara label dan input */
+}
+
+form input, form select {
+    width: 100%;
+    padding: 15px; /* Memperbesar padding pada input */
+    margin-bottom: 15px; /* Menambah jarak antara input */
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+/* Menambahkan jarak yang lebih besar pada tombol submit */
+form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #e65c00;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Menambah jarak dengan elemen di atasnya */
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 15px; /* Memperbesar padding pada tabel */
+    text-align: left;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0; 
+    padding: 40px 0; /* Menambah padding pada bagian footer */
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Menambah jarak antar item grid */
+    margin: 50px 20px;
+    animation: slideInFromRight 1s ease-in-out 1.5s forwards; 
+}
+
+.info-box {
+    background: #333;
+    padding: 30px; /* Memperbesar padding */
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #FF5722;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px; 
+    flex: 1;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px; /* Menambah jarak antar bagian footer */
+}
+
+.footer-section h4 {
+    margin-bottom: 20px; /* Menambah jarak dengan konten di bawahnya */
+    color: #ff6600; 
+}
+
+.footer-section ul {
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #b0b0b0;
+    padding: 20px 0;
+}

@@ -7,6 +7,29 @@ body {
    padding: 0;
 }
 
+/* Memperbesar ukuran judul dan heading */
+h1, h2, h3 {
+   font-weight: bold;
+   color: #ff6600; /* Menggunakan warna kontras */
+   margin-bottom: 20px;
+}
+
+/* Heading utama (misal, di bagian absensi) */
+h1 {
+   font-size: 32px; /* Ukuran lebih besar untuk heading utama */
+   line-height: 1.5; /* Memberikan ruang lebih untuk keterbacaan */
+}
+
+/* Sub-heading (misal, di bagian footer atau section lain) */
+h2 {
+   font-size: 28px;
+   margin-bottom: 15px;
+}
+
+h3 {
+   font-size: 24px;
+}
+
 header {
    background-color: #333;
    padding: 10px 20px;
@@ -42,8 +65,17 @@ nav {
    transition: background-color 0.3s;
 }
 
-.nav-links a:hover {
+/* Memperjelas tombol atau link penting */
+.nav-links a, form button {
+   font-weight: bold;
+   font-size: 16px;
    background-color: #ff6600;
+   color: #fff;
+}
+
+.nav-links a:hover, form button:hover {
+   color: white;
+   background-color: #e65c00; /* Menambahkan kontras saat hover */
 }
 
 /* Main Content */
@@ -61,11 +93,19 @@ main {
 
 .absensi h2, .data-siswa h2 {
    color: #ff6600;
+   font-weight: bold;
+   font-size: 26px; 
 }
 
 form label {
    display: block;
    margin-bottom: 5px;
+}
+
+form label .p {
+   font-size: 16px;
+   line-height: 1.6; 
+   color: #333;
 }
 
 form input, form select {
@@ -101,6 +141,13 @@ table {
 
 table, th, td {
    border: 1px solid #ccc;
+}
+
+table th {
+   background-color: #ff6600; /* Heading tabel lebih menonjol */
+   color: #fff;
+   font-weight: bold;
+   font-size: 18px;
 }
 
 th, td {
