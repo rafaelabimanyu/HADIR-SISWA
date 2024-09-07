@@ -1,119 +1,103 @@
-// JavaScript for responsive navbar
+// JavaScript untuk website Anda
+
 document.addEventListener("DOMContentLoaded", function() {
+    // **Responsive Navbar**
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const closeBtn = document.querySelector('.close-btn');
 
     if (hamburger && navMenu && closeBtn) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('show');  // Toggle menu visibility
-            navMenu.classList.toggle('hide');  // Menambahkan kelas hide untuk animasi
+        // Fungsi untuk membuka dan menutup navbar
+        function toggleMenu() {
+            navMenu.classList.toggle('show');
+            navMenu.classList.toggle('hide');
             hamburger.classList.toggle('active');
             closeBtn.classList.toggle('show');
             closeBtn.classList.toggle('hide');
+        }
+
+        // Event listener untuk ikon hamburger
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Event listener untuk tombol close
+        closeBtn.addEventListener('click', toggleMenu);
+    } else {
+        console.error('Element hamburger, navMenu, atau closeBtn tidak ditemukan.');
+    }
+
+    // **Animasi Hero Section**
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.classList.add('fadeIn');
+    }
+
+    // **Inisialisasi Carousel**
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    if (carouselItems.length > 0) {
+        carouselItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.5}s`; // Memberikan delay animasi
+            item.classList.add('slideIn');
+        });
+    }
+
+    // **Fungsi Modal**
+    const openModalBtn = document.getElementById('open-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modal = document.getElementById('modal');
+
+    if (openModalBtn && closeModalBtn && modal) {
+        // Fungsi untuk menampilkan modal
+        function showModal() {
+            modal.style.display = 'flex';
+            setTimeout(function() {
+                modal.classList.add('active'); // Menambahkan kelas untuk animasi
+            }, 10); // Sedikit delay untuk memastikan CSS transition berjalan
+        }
+
+        // Fungsi untuk menyembunyikan modal
+        function hideModal() {
+            modal.classList.add('hide');
+            setTimeout(function() {
+                modal.style.display = 'none';
+                modal.classList.remove('active', 'hide');
+            }, 500); // Durasi harus sesuai dengan durasi animasi di CSS
+        }
+
+        // Event listener untuk membuka modal
+        openModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal();
         });
 
-        closeBtn.addEventListener('click', function() {
-            navMenu.classList.remove('show');  // Hide menu
-            navMenu.classList.add('hide');  // Menambahkan kelas hide untuk animasi
-            hamburger.classList.remove('active');
-            closeBtn.classList.remove('show');
-            closeBtn.classList.add('hide');
+        // Event listener untuk menutup modal
+        closeModalBtn.addEventListener('click', function() {
+            hideModal();
+        });
+
+        // Menutup modal jika pengguna mengklik di luar konten modal
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                hideModal();
+            }
         });
     } else {
-        console.error('Required elements not found in the DOM.');
+        console.error('Element openModalBtn, closeModalBtn, atau modal tidak ditemukan.');
     }
 });
 
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Start the fadeIn animation for the hero section
-    document.querySelector('.hero').classList.add('fadeIn');
-
-    // Start the slideIn animation for each carousel item
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    carouselItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.5}s`; // Stagger the animation
-        item.classList.add('slideIn');
-    });
-});
-
-function moveSlide(n) {
-    const carousel = document.querySelector('.carousel');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    let currentIndex = 0;
-
-    // Find the current visible item
-    carouselItems.forEach((item, index) => {
-        if (item.style.transform === "translateX(0%)") {
-            currentIndex = index;
-        }
-    });
-
-    // Calculate new index
-    let newIndex = currentIndex + n;
-    if (newIndex >= carouselItems.length) {
-        newIndex = 0;
-    } else if (newIndex < 0) {
-        newIndex = carouselItems.length - 1;
-    }
-
-    // Move to the new slide
-    carousel.style.transform = `translateX(-${newIndex * 100}%)`;
-}
-
-
+// **Fungsi Carousel Slide**
 let currentIndex = 0;
 
 function moveSlide(step) {
     const slides = document.querySelectorAll('.carousel-item');
     const totalSlides = slides.length;
 
-    currentIndex = (currentIndex + step + totalSlides) % totalSlides;
-    const offset = -currentIndex * 100;
+    if (totalSlides > 0) {
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+        const offset = -currentIndex * 100;
 
-    document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+        document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+    } else {
+        console.error('Carousel items tidak ditemukan.');
+    }
 }
-
-
- 
-document.addEventListener('DOMContentLoaded', function() {
-    const openModalBtn = document.getElementById('open-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-    const modal = document.getElementById('modal');
-
-    // Fungsi untuk menampilkan modal
-    function showModal() {
-        modal.style.display = 'flex';
-        setTimeout(function() {
-            modal.classList.add('active');
-        }, 10); // Timeout untuk memastikan modal muncul dengan animasi
-    }
-
-    // Fungsi untuk menyembunyikan modal
-    function hideModal() {
-        modal.classList.add('hide');
-        setTimeout(function() {
-            modal.style.display = 'none';
-            modal.classList.remove('active', 'hide');
-        }, 500); // Durasi animasi fadeOutScale
-    }
-
-    openModalBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        showModal();
-    });
-
-    closeModalBtn.addEventListener('click', function() {
-        hideModal();
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            hideModal();
-        }
-    });
-});
