@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Pop-up untuk memasukkan password saat pertama kali masuk
+    function requestPassword() {
+        let userPassword = prompt('Masukkan password untuk mengakses website:');
+        
+        // Cek password yang dimasukkan
+        if (userPassword !== 'MOCHWASROI69') {
+            alert('Password salah. Anda akan keluar dari website.');
+            window.location.href = 'index.html'; // Ubah ke halaman lain atau keluarkan pengguna
+        } else {
+            alert('Password benar. Selamat datang!');
+        }
+    }
+
+    // Panggil fungsi requestPassword saat halaman dimuat
+    requestPassword();
+
     const form = document.getElementById('absensi-form');
     const namaInput = document.getElementById('nama');
     const namaError = document.getElementById('nama-error');
