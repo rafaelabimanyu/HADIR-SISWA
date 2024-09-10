@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Access</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1c1c1c 30%, #ff6600 100%);
+            color: white;
+        }
+
+        /* Background video */
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: blur(10px) brightness(0.3);
+        }
+
+        .modal {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .modal h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        input[type="password"] {
+            padding: 15px;
+            width: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            font-size: 18px;
+            background: transparent;
+            color: white;
+            transition: border 0.4s ease;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"]:focus {
+            border-color: #ff6600;
+        }
+
+        .btn-submit {
+            background-color: #ff6600;
+            color: white;
+            padding: 15px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.4s ease, transform 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #e65c00;
+            transform: scale(1.05);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 20px;
+            top: calc(50% + 20px);
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+            user-select: none;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 15px;
+            display: none;
+            font-size: 14px;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100%); opacity: 0; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25%, 75% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 500px) {
+            .modal {
+                width: 90%;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background video -->
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="https://www.videvo.net/videvo_files/converted/2021_09/preview/211013_06_Matrix_SciFi_DigitalWorld_04.mp410798.mp4" type="video/mp4">
+    </video>
+
+    <!-- Modal for Password -->
+    <div id="passwordModal" class="modal">
+        <h2>Secure Access</h2>
+        <div style="position: relative;">
+            <input type="password" id="passwordInput" placeholder="Enter Password">
+            <span class="toggle-password" onclick="togglePassword()">👁</span>
+        </div>
+        <button id="submitPassword" class="btn-submit">Submit</button>
+        <div id="errorMessage" class="error-message">Incorrect password. Please try again.</div>
+    </div>
+
+    <script>
+        const correctPassword = "mochwasroi69";
+
+        const modal = document.getElementById("passwordModal");
+        const submitPassword = document.getElementById("submitPassword");
+        const passwordInput = document.getElementById("passwordInput");
+        const errorMessage = document.getElementById("errorMessage");
+
+        // Function to check password
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === correctPassword) {
+                // Add slide up animation
+                modal.classList.add('slide-up');
+
+                // Wait for animation to finish before hiding modal
+                setTimeout(() => {
+                    modal.style.display = "none"; // Close modal
+                    document.body.style.overflow = "auto"; // Re-enable scrolling
+                }, 600);
+            } else {
+                errorMessage.style.display = "block"; // Show error message
+                modal.classList.add('shake'); // Add shake animation
+                setTimeout(() => {
+                    modal.classList.remove('shake');
+                }, 300);
+            }
+        }
+
+        // Event listener for submit button
+        submitPassword.onclick = function() {
+            checkPassword();
+        };
+
+        // Event listener for Enter key
+        passwordInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Hide error message on input
+        passwordInput.oninput = function() {
+            errorMessage.style.display = "none";
+        };
+
+        // Toggle password visibility
+        function togglePassword() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                document.querySelector('.toggle-password').textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                document.querySelector('.toggle-password').textContent = "👁";
+            }
+        }
+    </script>
+
+</body>
+</html>
