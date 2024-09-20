@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPLG 1 Attendance</title>
+    <style>
+/* Keyframes for fade-in and slide-in effects */
+@keyframes fadeIn {
+   from { opacity: 0; }
+   to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+   from { transform: translateX(-100%); opacity: 0; }
+   to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+   from { transform: translateX(100%); opacity: 0; }
+   to { transform: translateX(0); opacity: 1; }
+}
+
+/* General Styles */
+body {
+   font-family: 'Roboto', sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #2e2e2e;
+   color: #e0e0e0;
+}
+
+/* Heading font */
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600; /* Bold */
+   letter-spacing: 1px; /* Sedikit spasi antar huruf */
+   line-height: 1.2; /* Lebih rapat untuk heading */
+}
+
+/* Paragraph font */
+body, p {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300; /* Light */
+   letter-spacing: 0.5px; /* Spasi antar huruf */
+   line-height: 1.6; /* Lebih lebar untuk keterbacaan */
+}
+
+/* Untuk paragraf */
+p {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300; /* Menggunakan font weight yang ringan */
+   letter-spacing: 0.5px; /* Sedikit jarak antar huruf untuk kejelasan */
+   line-height: 1.6; /* Membuat teks lebih mudah dibaca */
+   margin-bottom: 1.5em; /* Memberikan jarak antar paragraf */
+}
+
+/* Untuk heading */
+h1, h2 {
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600; /* Heading tebal */
+   letter-spacing: 1px; /* Lebih luas jarak antar huruf untuk heading */
+   line-height: 1.2; /* Lebih padat agar heading lebih mencolok */
+}
+
+
+html {
+   scroll-behavior: smooth;
+}
+
+/* Header Styles */
+header {
+   background: #1f1f1f;
+   padding: 10px 0;
+   position: relative;
+}
+
+.container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+/* Container for logo and text */
+.logo {
+   display: flex;
+   align-items: center;
+}
+
+.logo img {
+   height: 40px;
+   width: 40px; /* Pastikan gambar berbentuk persegi */
+   margin-right: 10px; /* Menambahkan jarak antara logo dan teks */
+   background-color: #ffffff; /* Warna putih untuk background */
+   border-radius: 50%; /* Membuat background menjadi bulat */
+   overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari border */
+   object-fit: cover; /* Memastikan gambar memenuhi area */
+}
+
+.logo-text {
+   display: block; /* Pastikan teks selalu ditampilkan */
+   font-size: 18px;
+   color: #FF5722;
+   font-family: 'Oswald', sans-serif;
+   font-weight: 600;
+}
+
+
+/* Navbar Styles */
+.navbar {
+   display: flex;
+}
+
+.navbar ul {
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.navbar ul li {
+   margin: 0 15px;
+}
+
+.navbar ul li a {
+   color: #e0e0e0;
+   text-decoration: none;
+   font-size: 18px;
+   padding: 5px 10px;
+   border-radius: 3px;
+   border: 1px solid #FF5722;
+   transition: background-color 0.3s ease, color 0.3s ease;
+   -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+   -moz-transition: background-color 0.3s ease, color 0.3s ease;
+   -ms-transition: background-color 0.3s ease, color 0.3s ease;
+   -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+   background-color: #FF5722;
+   color: #fff;
+}
+
+/* search */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: -30px; /* Atur jarak atas untuk mengangkat search bar lebih tinggi */
+    margin-bottom: 15px; /* Jarak bawah */
+}
+
+.search-bar input[type="text"] {
+    padding: 15px; /* Perbesar padding */
+    border: 1px solid #FF5722;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 18px; /* Perbesar ukuran font */
+    width: 250px; /* Perpanjang lebar input */
+    height: 19px; /* Tinggi input */
+}
+
+.search-bar button {
+    background-color: #FF5722;
+    color: #fff;
+    border: none;
+    padding: 12px 20px; /* Perbesar padding */
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px; /* Samakan tinggi dengan input */
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    #mobile-search {
+        display: flex;
+        margin: 5px 0; /* Jarak atas dan bawah yang lebih kecil */
+        padding-top: 10px; /* Angkat sedikit */
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none; /* Sembunyikan navbar default */
+    }
+
+    .menu-toggle {
+        display: flex; /* Tampilkan menu toggle */
+    }
+
+    .navbar.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #1f1f1f;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        z-index: 999;
+    }
+
+    /* Menampilkan search bar dalam menu hamburger */
+    #mobile-search {
+        display: flex;
+        margin: 10px 0; /* Jarak atas dan bawah */
+    }
+}
+
+
+/* Menu Toggle (Hamburger) Styles */
+.menu-toggle {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   z-index: 1000;
+}
+
+.menu-toggle i {
+   font-size: 24px;
+   color: #FF5722;
+}
+
+/* Hamburger Animation */
+.hamburger {
+   display: none;
+   flex-direction: column;
+   cursor: pointer;
+   position: relative;
+   z-index: 1000; /* Ensure hamburger is above other elements */
+}
+
+.hamburger span {
+   height: 3px;
+   width: 25px;
+   background: #FF5722;
+   margin-bottom: 4px;
+   border-radius: 2px;
+   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animation when active */
+.hamburger.active span:nth-child(1) {
+   transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+   opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hamburger.active span {
+   background-color: #fff; /* Optionally change color when active */
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+   .menu-toggle {
+       display: flex;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+}
+
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+   .logo-text {
+       display: block;
+   }
+
+   .navbar {
+       display: none;
+   }
+
+   .menu-toggle {
+       display: flex;
+   }
+
+   .navbar.show {
+       display: flex;
+       flex-direction: column;
+       position: absolute;
+       top: 60px;
+       right: 0;
+       background: #1f1f1f;
+       width: 100vw;
+       height: calc(100vh - 60px);
+       overflow-y: auto;
+       justify-content: center;
+       align-items: center;
+       z-index: 999;
+   }
+
+   .navbar ul {
+       flex-direction: column;
+   }
+
+   .navbar ul li {
+       margin: 20px 0;
+   }
+
+   .navbar ul li a {
+       font-size: 24px;
+       padding: 10px 20px;
+       border: none;
+   }
+
+   /* Nav Menu Styles */
+   .nav-menu {
+       position: fixed;
+       top: 0;
+       right: 0;
+       background: #1f1f1f;
+       flex-direction: column;
+       width: 100vw;
+       height: 100vh;
+       overflow: hidden;
+       transition: transform 0.3s ease;
+       transform: translateX(100%);
+       z-index: 999;
+       justify-content: center; /* Center items vertically */
+       align-items: center; /* Center items horizontally */
+   }
+
+   .nav-menu.show {
+       transform: translateX(0);
+   }
+
+   .nav-menu li {
+       margin: 20px 0;
+   }
+
+   .nav-menu li a {
+       font-size: 24px;
+       padding: 10px 20px;
+   }
+
+   .hamburger {
+       display: flex;
+   }
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="img/logo 1.webp" alt="Logo SMK Prestasi Prima"></a>
+                <span class="logo-text">X PPLG 1</span>
+            </div>
+            <nav id="nav-menu" class="navbar">
+                <div class="search-bar" id="mobile-search" style="display: none;">
+                    <input type="text" id="searchInput" placeholder="Cari sesuatu..." aria-label="Search">
+                    <button type="button" id="searchBtn" aria-label="Search Button"><i class="fas fa-search"></i></button>
+                </div>
+                <ul>
+                    <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="absensi.html"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
+                    <li><a href="kas.html"><i class="fas fa-wallet"></i> Kas</a></li>
+                    <li><a href="contact.html"><i class="fas fa-address-book"></i> Kontak</a></li>
+                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                </ul>
+            </nav>
+            
+    
+            <div id="hamburger" class="menu-toggle" aria-label="Menu Toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    
+
+
+<!-- JavaScript Files -->
+<script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+    const navbar = document.getElementById('nav-menu');
+    const searchBar = document.getElementById('mobile-search');
+
+    navbar.classList.toggle('show'); // Tampilkan/ sembunyikan navbar
+
+    // Tampilkan atau sembunyikan search bar saat menu dibuka
+    if (navbar.classList.contains('show')) {
+        searchBar.style.display = 'flex';
+    } else {
+        searchBar.style.display = 'none';
+    }
+});
+
+</script>
+</body>
+</html>
