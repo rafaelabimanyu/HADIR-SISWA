@@ -111,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function() {
 let timeVisible = false; // Status untuk memeriksa apakah waktu ditampilkan
 
 function showTimeElapsed() {
-    const timeButton = document.getElementById("time-button");
     const timeInfo = document.getElementById("time-info");
+    const timeButton = document.getElementById("time-button");
 
     // Hitung waktu sejak pengembangan dimulai
     const startTime = new Date("2024-01-01T00:00:00");
@@ -131,14 +131,12 @@ function showTimeElapsed() {
         // Tampilkan elemen waktu jika tidak terlihat
         timeInfo.style.display = "block"; 
         timeInfo.classList.add('show');
-
         // Ubah teks tombol
         timeButton.innerText = "Tutup Waktu";
     } else {
         // Jika sudah ditampilkan, sembunyikan informasi waktu
         timeInfo.style.display = "none";
         timeInfo.classList.remove('show');
-
         // Kembali ke teks awal
         timeButton.innerText = "Tampilkan Waktu";
     }
@@ -146,6 +144,11 @@ function showTimeElapsed() {
     // Toggle status
     timeVisible = !timeVisible;
 }
+
+// Event listener untuk tombol
+document.getElementById("time-button").addEventListener("click", showTimeElapsed);
+
+
 
 
 // **Fungsi Carousel Slide**

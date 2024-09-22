@@ -1,161 +1,170 @@
-/* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2e2e2e; /* Dark background */
-            color: #e0e0e0; /* Light gray text */
+<div class="development-time">
+            <p>Klik tombol di bawah untuk melihat waktu pengembangan.</p>
+            <button class="development-time-button" onclick="showTimeElapsed()">Tampilkan Waktu</button>
+            <p id="time-info" style="display: none;">Website ini telah dikembangkan selama <span id="time-elapsed"></span>.</p>
+        </div>// JavaScript untuk website Anda
+
+document.addEventListener("DOMContentLoaded", function() {
+    // **Responsive Navbar**
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (hamburger && navMenu && closeBtn) {
+        // Fungsi untuk membuka dan menutup navbar
+        function toggleMenu() {
+            navMenu.classList.toggle('show');
+            navMenu.classList.toggle('hide');
+            hamburger.classList.toggle('active');
+            closeBtn.classList.toggle('show');
+            closeBtn.classList.toggle('hide');
         }
 
-        html {
-            scroll-behavior: smooth;
+        // Event listener untuk ikon hamburger
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Event listener untuk tombol close
+        closeBtn.addEventListener('click', toggleMenu);
+    } else {
+        console.error('Element hamburger, navMenu, atau closeBtn tidak ditemukan.');
+    }
+
+    // **Animasi Hero Section**
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.classList.add('fadeIn');
+    }
+
+    // **Inisialisasi Carousel**
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    if (carouselItems.length > 0) {
+        carouselItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.5}s`; // Memberikan delay animasi
+            item.classList.add('slideIn');
+        });
+    }
+
+    // **Fungsi Modal**
+    const openModalBtn = document.getElementById('open-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modal = document.getElementById('modal');
+
+    if (openModalBtn && closeModalBtn && modal) {
+        // Fungsi untuk menampilkan modal
+        function showModal() {
+            modal.style.display = 'flex';
+            setTimeout(function() {
+                modal.classList.add('active'); // Menambahkan kelas untuk animasi
+            }, 10); // Sedikit delay untuk memastikan CSS transition berjalan
         }
 
-        header {
-            background: #1f1f1f; /* Darker background for header */
-            color: #e0e0e0;
-            padding: 10px 0;
+        // Fungsi untuk menyembunyikan modal
+        function hideModal() {
+            modal.classList.add('hide');
+            setTimeout(function() {
+                modal.style.display = 'none';
+                modal.classList.remove('active', 'hide');
+            }, 500); // Durasi harus sesuai dengan durasi animasi di CSS
         }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
+        // Event listener untuk membuka modal
+        openModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal();
+        });
 
-        nav ul li {
-            margin: 0 15px;
-        }
+        // Event listener untuk menutup modal
+        closeModalBtn.addEventListener('click', function() {
+            hideModal();
+        });
 
-        nav ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 5px 10px; /* Padding for box effect */
-            border-radius: 3px; /* Slightly rounded corners */
-            border: 1px solid #e0e0e0; /* Light border for box effect */
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+        // Menutup modal jika pengguna mengklik di luar konten modal
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                hideModal();
+            }
+        });
+    } else {
+        console.error('Element openModalBtn, closeModalBtn, atau modal tidak ditemukan.');
+    }
 
-        nav ul li a:hover {
-            background-color: #444; /* Darker gray for hover effect */
-            color: #fff;
-        }
+    // **Fungsi untuk menghitung waktu berjalan**
+    function calculateDevelopmentTime() {
+        const startDate = new Date('2024-08-25T00:00:00'); // Tanggal pembuatan website (25 Agustus 2024)
+        const currentDate = new Date(); // Tanggal saat ini
+        const timeDiff = currentDate - startDate; // Selisih waktu dalam milidetik
 
-        .hero {
-            background: linear-gradient(135deg, #444, #555, #666); /* Gradient background */
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px;
-        }
+        // Konversi milidetik menjadi hari, jam, menit, detik
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+        // Format hasilnya
+        const timeElapsed = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
 
-        .hero p {
-            font-size: 24px;
-            margin-bottom: 40px;
-        }
+        // Menampilkan hasil pada elemen dengan id 'time-elapsed'
+        document.getElementById('time-elapsed').textContent = timeElapsed;
+    }
 
-        .cta-button {
-            background: #666; /* Medium dark gray */
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
+    // Jalankan fungsi setiap detik agar waktu selalu terupdate
+    setInterval(calculateDevelopmentTime, 1000);
+});
 
-        .cta-button:hover {
-            background-color: #777; /* Slightly lighter gray */
-        }
+// Status untuk memeriksa apakah waktu ditampilkan
+let timeVisible = false; // Status untuk memeriksa apakah waktu ditampilkan
 
-        .info {
-            display: flex;
-            justify-content: center;
-            margin: 50px 20px;
-            flex-wrap: wrap;
-        }
+function showTimeElapsed() {
+    const timeButton = document.getElementById("time-button");
+    const timeInfo = document.getElementById("time-info");
 
-        .info-box {
-            background: #333; /* Dark background */
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            text-align: center;
-            flex: 1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 300px;
-            color: #e0e0e0; /* Light gray text */
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for contrast */
-        }
+    // Hitung waktu sejak pengembangan dimulai
+    const startTime = new Date("2024-01-01T00:00:00");
+    const now = new Date();
+    const timeElapsed = now - startTime;
 
-        .info-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
-        }
+    // Konversi waktu ke hari, jam, menit
+    const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
 
-        footer {
-            background: #1f1f1f; /* Darker background for footer */
-            color: #e0e0e0;
-            text-align: center;
-            padding: 10px 0;
-        }
+    // Tampilkan waktu yang telah berlalu
+    document.getElementById("time-elapsed").innerText = `${days} hari, ${hours} jam, dan ${minutes} menit`;
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
+    if (!timeVisible) {
+        // Tampilkan elemen waktu jika tidak terlihat
+        timeInfo.style.display = "block"; 
+        timeInfo.classList.add('show');
 
-        .modal-content {
-            background-color: #333; /* Dark background for modal */
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            color: #e0e0e0; /* Light gray text */
-        }
+        // Ubah teks tombol
+        timeButton.innerText = "Tutup Waktu";
+    } else {
+        // Jika sudah ditampilkan, sembunyikan informasi waktu
+        timeInfo.style.display = "none";
+        timeInfo.classList.remove('show');
 
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-        }
+        // Kembali ke teks awal
+        timeButton.innerText = "Tampilkan Waktu";
+    }
 
-        .article {
-            margin: 50px 20px;
-            padding: 20px;
-            background-color: #444; /* Dark background */
-            border-radius: 10px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    // Toggle status
+    timeVisible = !timeVisible;
+}
 
-        .article h2 {
-            color: #fff; /* Light text color for headings */
-            margin-bottom: 15px;
-        }
 
-        .article p {
-            color: #ccc; /* Lighter gray for text */
-            line-height: 1.6;
-        }
+// **Fungsi Carousel Slide**
+let currentIndex = 0;
+
+function moveSlide(step) {
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
+
+    if (totalSlides > 0) {
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+        const offset = -currentIndex * 100;
+
+        document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+    } else {
+        console.error('Carousel items tidak ditemukan.');
+    }
+} hilangkan waktu yang kedua ketika tampilkan waktu nya di klik 2kali
