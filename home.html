@@ -24,6 +24,10 @@
                     <li><a href="contact.html"><i class="fas fa-address-book"></i> Kontak</a></li>
                     <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                 </ul>
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Cari...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
                 <div class="close-btn"></div>
             </nav>
             <div id="hamburger" class="menu-toggle" aria-label="Menu Toggle">
@@ -31,6 +35,7 @@
             </div>
         </div>
     </header>
+    
 
     <main>
         <section class="hero">
@@ -99,6 +104,13 @@
                 </ul>
             </div>
         </div>
+
+        <div class="development-time">
+            <p>Klik tombol di bawah untuk melihat waktu pengembangan.</p>
+            <button class="development-time-button" onclick="showTimeElapsed()">Tampilkan Waktu</button>
+            <p id="time-info" style="display: none;">Website ini telah dikembangkan selama <span id="time-elapsed"></span>.</p>
+        </div>
+        
 
     </main>
 

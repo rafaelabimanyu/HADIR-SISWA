@@ -113,35 +113,51 @@ header {
    display: flex;
 }
 
+/* Navbar ul styling */
 .navbar ul {
-   display: flex;
-   list-style: none;
-   margin: 0;
-   padding: 0;
+    display: flex;
+    justify-content: center; /* Menjadikan item di navbar sejajar di tengah */
+    align-items: center; /* Menjaga item tetap sejajar secara vertikal */
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* Navbar ul li styling */
 .navbar ul li {
-   margin: 0 15px;
+    margin: 0 15px;
 }
 
 .navbar ul li a {
-   color: #e0e0e0;
-   text-decoration: none;
-   font-size: 18px;
-   padding: 5px 10px;
-   border-radius: 3px;
-   border: 1px solid #FF5722;
-   transition: background-color 0.3s ease, color 0.3s ease;
-   -webkit-transition: background-color 0.3s ease, color 0.3s ease;
-   -moz-transition: background-color 0.3s ease, color 0.3s ease;
-   -ms-transition: background-color 0.3s ease, color 0.3s ease;
-   -o-transition: background-color 0.3s ease, color 0.3s ease;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #FF5722;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li a:hover {
-   background-color: #FF5722;
-   color: #fff;
+    background-color: #FF5722;
+    color: #fff;
 }
+
+/* Untuk responsif */
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        justify-content: flex-start; /* Mengatur agar item berbaris dari atas ke bawah */
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin: 20px 0;
+    }
+}
+
+
+
 
 /* Menu Toggle (Hamburger) Styles */
 .menu-toggle {
@@ -282,6 +298,55 @@ header {
        display: flex;
    }
 }
+
+.search-bar {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-left: 20px; /* Jarak dari navbar */
+}
+
+.search-input {
+   flex: 1; /* Input mengambil ruang tersisa */
+   padding: 8px; /* Tambahkan padding untuk ukuran input */
+   font-size: 16px; /* Besarkan ukuran font */
+   border: 1px solid #FF5722; /* Warna border */
+   border-radius: 5px; /* Membuat sudut melengkung */
+   margin-right: 10px; /* Jarak antara input dan tombol */
+}
+
+.search-btn {
+   background-color: #FF5722; /* Warna background tombol */
+   color: white; /* Warna teks tombol */
+   padding: 8px 15px; /* Padding tombol */
+   font-size: 16px; /* Besarkan ukuran font tombol */
+   border: none; /* Hapus border */
+   border-radius: 5px; /* Membuat sudut melengkung */
+   cursor: pointer; /* Tampilkan pointer saat hover */
+   transition: background-color 0.3s ease; /* Efek transisi saat hover */
+}
+
+.search-btn:hover {
+   background-color: #e64a19; /* Warna saat hover */
+}
+
+@media screen and (max-width: 768px) {
+   .search-bar {
+       display: flex; /* Tampilkan saat responsif */
+       margin: 20px 0; /* Tambahkan margin untuk pemisah */
+   }
+
+   .search-input {
+       font-size: 18px; /* Besarkan ukuran font input saat responsif */
+   }
+
+   .search-btn {
+       font-size: 18px; /* Besarkan ukuran font tombol saat responsif */
+   }
+}
+
+
+
 
 
 
@@ -455,6 +520,103 @@ header {
    line-height: 1.6;
    font-size: 16px;
 }
+
+/* Styling untuk elemen waktu berjalan */
+.development-time {
+   font-family: 'Poppins', sans-serif;
+   background: linear-gradient(135deg, #ff8c00, #f85032);
+   padding: 25px;
+   border-radius: 15px;
+   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   max-width: 600px;
+   margin: 50px auto;
+   position: relative;
+   overflow: hidden;
+}
+
+.development-time::before {
+   content: "";
+   position: absolute;
+   top: -50%;
+   left: -50%;
+   width: 200%;
+   height: 200%;
+   background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+   animation: spin 10s linear infinite;
+   z-index: 0;
+}
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+}
+
+.development-time p {
+   font-size: 20px;
+   color: #fff;
+   margin: 0;
+   position: relative;
+   z-index: 1;
+}
+
+#time-elapsed {
+   font-weight: 600;
+   font-size: 24px;
+   color: #fff;
+   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+   position: relative;
+   z-index: 1;
+}
+
+/* Tombol dekoratif */
+.development-time-button {
+   margin-top: 15px;
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #fff;
+   color: #ff8c00;
+   font-size: 16px;
+   font-weight: 500;
+   border-radius: 25px;
+   transition: all 0.3s ease-in-out;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   position: relative;
+   z-index: 1;
+}
+
+.development-time-button:hover {
+   background-color: #ff8c00;
+   color: #fff;
+   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animasi tampilan untuk waktu yang tersembunyi */
+#time-info {
+   opacity: 0;
+   transition: opacity 0.5s ease-in-out;
+}
+
+#time-info.show {
+   display: block;
+   opacity: 1;
+}
+
+/* Responsif untuk tampilan mobile */
+@media (max-width: 768px) {
+   .development-time {
+       padding: 20px;
+   }
+
+   .development-time p {
+       font-size: 18px;
+   }
+
+   #time-elapsed {
+       font-size: 20px;
+   }
+}
+
 
 /* Footer Styles */
 .footer {
