@@ -498,7 +498,7 @@ header {
    left: -50%;
    width: 200%;
    height: 200%;
-   background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+   background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
    animation: spin 10s linear infinite;
    z-index: 0;
 }
@@ -548,12 +548,14 @@ header {
 
 #time-info {
    opacity: 0;
-   transition: opacity 0.5s ease-in-out;
+   max-height: 0;
+   overflow: hidden;
+   transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
 }
 
 #time-info.show {
-   display: block;
    opacity: 1;
+   max-height: 100px;
 }
 
 @media (max-width: 768px) {
@@ -569,6 +571,7 @@ header {
        font-size: 20px;
    }
 }
+
 
 .footer {
    background-color: #1e1e1e; /* Warna latar belakang footer yang gelap */

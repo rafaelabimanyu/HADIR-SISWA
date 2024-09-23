@@ -1,6 +1,4 @@
-// JavaScript untuk website Anda
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // **Responsive Navbar**
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
@@ -32,13 +30,56 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // **Inisialisasi Carousel**
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    if (carouselItems.length > 0) {
-        carouselItems.forEach((item, index) => {
-            item.style.animationDelay = `${index * 0.5}s`; // Memberikan delay animasi
-            item.classList.add('slideIn');
-        });
+    let currentIndex = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+
+        if (totalSlides > 0) {
+            currentIndex += step;
+
+            // Mencegah kembali ke slide pertama jika bergerak ke kanan
+            if (currentIndex >= totalSlides) {
+                currentIndex = totalSlides - 1; // Tetap di slide terakhir
+            } else if (currentIndex < 0) {
+                currentIndex = 0; // Kembali ke slide pertama jika bergerak ke kiri
+            }
+
+            const offset = -currentIndex * 100;
+            const carouselElem = document.querySelector('.carousel');
+            if (carouselElem) {
+                carouselElem.style.transform = `translateX(${offset}%)`;
+            }
+        } else {
+            console.error('Carousel items tidak ditemukan.');
+        }
     }
+
+    // Event listener untuk tombol navigasi carousel
+    const nextBtn = document.getElementById('next-slide');
+    const prevBtn = document.getElementById('prev-slide');
+
+    if (nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', function () {
+            moveSlide(1);
+        });
+
+        prevBtn.addEventListener('click', function () {
+            moveSlide(-1);
+        });
+    } else {
+        console.error('Element next-slide atau prev-slide tidak ditemukan.');
+    }
+
+    // Event listener untuk mengklik gambar untuk berpindah slide
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    carouselItems.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            const step = index === currentIndex ? 1 : (index > currentIndex ? 1 : -1);
+            moveSlide(step);
+        });
+    });
 
     // **Fungsi Modal**
     const openModalBtn = document.getElementById('open-modal');
@@ -49,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Fungsi untuk menampilkan modal
         function showModal() {
             modal.style.display = 'flex';
-            setTimeout(function() {
+            setTimeout(function () {
                 modal.classList.add('active'); // Menambahkan kelas untuk animasi
             }, 10); // Sedikit delay untuk memastikan CSS transition berjalan
         }
@@ -57,25 +98,25 @@ document.addEventListener("DOMContentLoaded", function() {
         // Fungsi untuk menyembunyikan modal
         function hideModal() {
             modal.classList.add('hide');
-            setTimeout(function() {
+            setTimeout(function () {
                 modal.style.display = 'none';
                 modal.classList.remove('active', 'hide');
             }, 500); // Durasi harus sesuai dengan durasi animasi di CSS
         }
 
         // Event listener untuk membuka modal
-        openModalBtn.addEventListener('click', function(e) {
+        openModalBtn.addEventListener('click', function (e) {
             e.preventDefault();
             showModal();
         });
 
         // Event listener untuk menutup modal
-        closeModalBtn.addEventListener('click', function() {
+        closeModalBtn.addEventListener('click', function () {
             hideModal();
         });
 
         // Menutup modal jika pengguna mengklik di luar konten modal
-        window.addEventListener('click', function(event) {
+        window.addEventListener('click', function (event) {
             if (event.target == modal) {
                 hideModal();
             }
@@ -86,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // **Fungsi untuk menghitung waktu berjalan**
     function calculateDevelopmentTime() {
-        const startDate = new Date('2024-08-25T00:00:00'); // Tanggal pembuatan website (25 Agustus 2024)
+        const startDate = new Date('2024-08-25T00:00:00'); // Tanggal pembuatan website
         const currentDate = new Date(); // Tanggal saat ini
         const timeDiff = currentDate - startDate; // Selisih waktu dalam milidetik
 
@@ -100,70 +141,45 @@ document.addEventListener("DOMContentLoaded", function() {
         const timeElapsed = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
 
         // Menampilkan hasil pada elemen dengan id 'time-elapsed'
-        document.getElementById('time-elapsed').textContent = timeElapsed;
+        const timeElapsedElem = document.getElementById('time-elapsed');
+        if (timeElapsedElem) {
+            timeElapsedElem.textContent = timeElapsed;
+        }
+    }
+
+    // Fungsi untuk menampilkan dan menyembunyikan waktu dengan animasi
+    let timeVisible = false;
+
+    function showTimeElapsed() {
+        const timeInfo = document.getElementById("time-info");
+        const timeButton = document.getElementById("time-button");
+
+        if (!timeInfo || !timeButton) {
+            console.error('Element time-info atau time-button tidak ditemukan.');
+            return;
+        }
+
+        if (!timeVisible) {
+            // Tampilkan elemen waktu dengan animasi
+            timeInfo.classList.add('show');
+            timeButton.innerText = "Tutup Waktu";
+        } else {
+            // Sembunyikan elemen waktu dengan animasi
+            timeInfo.classList.remove('show');
+            timeButton.innerText = "Tampilkan Waktu";
+        }
+
+        timeVisible = !timeVisible;
     }
 
     // Jalankan fungsi setiap detik agar waktu selalu terupdate
     setInterval(calculateDevelopmentTime, 1000);
+
+    // Event listener untuk tombol
+    const timeButtonElem = document.getElementById("time-button");
+    if (timeButtonElem) {
+        timeButtonElem.addEventListener("click", showTimeElapsed);
+    } else {
+        console.error('Element time-button tidak ditemukan.');
+    }
 });
-
-// Status untuk memeriksa apakah waktu ditampilkan
-let timeVisible = false; // Status untuk memeriksa apakah waktu ditampilkan
-
-function showTimeElapsed() {
-    const timeInfo = document.getElementById("time-info");
-    const timeButton = document.getElementById("time-button");
-
-    // Hitung waktu sejak pengembangan dimulai
-    const startTime = new Date("2024-01-01T00:00:00");
-    const now = new Date();
-    const timeElapsed = now - startTime;
-
-    // Konversi waktu ke hari, jam, menit
-    const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
-
-    // Tampilkan waktu yang telah berlalu
-    document.getElementById("time-elapsed").innerText = `${days} hari, ${hours} jam, dan ${minutes} menit`;
-
-    if (!timeVisible) {
-        // Tampilkan elemen waktu jika tidak terlihat
-        timeInfo.style.display = "block"; 
-        timeInfo.classList.add('show');
-        // Ubah teks tombol
-        timeButton.innerText = "Tutup Waktu";
-    } else {
-        // Jika sudah ditampilkan, sembunyikan informasi waktu
-        timeInfo.style.display = "none";
-        timeInfo.classList.remove('show');
-        // Kembali ke teks awal
-        timeButton.innerText = "Tampilkan Waktu";
-    }
-
-    // Toggle status
-    timeVisible = !timeVisible;
-}
-
-// Event listener untuk tombol
-document.getElementById("time-button").addEventListener("click", showTimeElapsed);
-
-
-
-
-// **Fungsi Carousel Slide**
-let currentIndex = 0;
-
-function moveSlide(step) {
-    const slides = document.querySelectorAll('.carousel-item');
-    const totalSlides = slides.length;
-
-    if (totalSlides > 0) {
-        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
-        const offset = -currentIndex * 100;
-
-        document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
-    } else {
-        console.error('Carousel items tidak ditemukan.');
-    }
-}

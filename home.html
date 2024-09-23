@@ -39,7 +39,7 @@
 
     <main>
         <section class="hero">
-            <h1>Selamat Datang di Website Absensi</h1>  
+            <h1>Selamat Datang di Website X PPLG 1</h1>  
             <p>Untuk siswa kelas X PPLG 1</p>
             <p><i class="fas fa-school"></i> SMK Prestasi Prima</p>
             <a href="absensi.html" class="cta-button">Lihat Absensi</a>
@@ -58,12 +58,12 @@
                         <img src="img/ULTAH SIR WASTONI (3).jpeg" alt="Kelas X PPLG 1">
                     </div>
                 </div>
-                <button class="carousel-button prev" onclick="moveSlide(-1)" aria-label="Previous Slide">&#10094;</button>
-                <button class="carousel-button next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
+                <button id="prev-slide" class="carousel-button prev" aria-label="Previous Slide">&#10094;</button>
+                <button id="next-slide" class="carousel-button next" aria-label="Next Slide">&#10095;</button>
             </div>
-            <figcaption>Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
+            <figcaption class="class-figure">Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
         </section>
-
+        
         <section class="info">
             <div class="info-box">
                 <h2 style="color: #FF5722;">Fitur Utama</h2>
@@ -108,8 +108,11 @@
         <div class="development-time">
             <p>Klik tombol di bawah untuk melihat waktu pengembangan.</p>
             <button id="time-button" class="development-time-button">Tampilkan Waktu</button>
-            <p id="time-info" style="display: none;">Website ini telah dikembangkan selama <span id="time-elapsed"></span>.</p>
+            <p id="time-info" class="time-info-hidden">
+                Website ini telah dikembangkan selama <span id="time-elapsed"></span>.
+            </p>
         </div>
+        
         
     </main>
 
