@@ -478,6 +478,126 @@ header {
    font-size: 16px;
 }
 
+.announcements-container {
+   display: flex; /* Menggunakan flexbox untuk menyusun kotak secara horizontal */
+   justify-content: space-between; /* Jarak antara kedua kotak */
+   flex-wrap: wrap; /* Membungkus kotak pada layar kecil */
+   margin: 40px auto; /* Jarak atas yang lebih besar untuk ruang */
+   width: 90%; /* Lebar 90% dari kontainer */
+   max-width: 800px; /* Lebar maksimum lebih besar */
+}
+
+.announcements,
+.academic-calendar {
+   flex: 1; /* Mengizinkan kedua bagian mengambil ruang yang sama */
+   margin: 20px 10px; /* Margin di sekitar setiap bagian */
+   min-width: 220px; /* Lebar minimum yang lebih kecil */
+   padding: 20px; /* Padding di dalam kotak */
+   border-radius: 12px; /* Sudut yang lebih membulat */
+   position: relative; /* Untuk latar belakang animasi */
+   overflow: hidden; /* Menyembunyikan bagian latar belakang yang keluar dari kotak */
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+   transition: transform 0.3s, box-shadow 0.3s; /* Animasi saat hover */
+}
+
+/* Latar belakang gambar dengan efek parallax */
+.announcements::before,
+.academic-calendar::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-image: url('link-to-your-image.jpg'); /* Ganti dengan link gambar yang diinginkan */
+   background-size: cover; /* Menutupi seluruh area */
+   background-position: center; /* Pusat gambar */
+   transform: translateZ(0); /* Mempercepat rendering untuk parallax */
+   z-index: 0; /* Di belakang konten */
+}
+
+/* Gaya untuk Pengumuman Terbaru */
+.announcements {
+   background: rgba(255, 87, 34, 0.8); /* Gradasi oranye gelap */
+   color: white; /* Teks putih */
+}
+
+.announcements h2 {
+   font-size: 20px; /* Ukuran font */
+   margin-bottom: 10px; /* Margin bawah */
+   font-family: 'Arial', sans-serif; /* Font yang modern */
+   position: relative; /* Untuk teks di atas latar belakang */
+   z-index: 1; /* Di atas latar belakang animasi */
+}
+
+.announcements ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+.announcements ul li {
+   margin-bottom: 6px; /* Margin lebih kecil */
+   font-size: 16px; /* Ukuran font */
+}
+
+/* Gaya untuk Kalendar Akademik */
+.academic-calendar {
+   background: rgba(240, 240, 240, 0.8); /* Latar belakang abu-abu terang */
+   color: #333; /* Teks hitam */
+}
+
+.academic-calendar h2 {
+   font-size: 20px; /* Ukuran font */
+   color: #FF5722; /* Teks warna oranye */
+   margin-bottom: 10px; /* Margin bawah */
+   font-family: 'Arial', sans-serif; /* Font yang modern */
+   position: relative; /* Untuk teks di atas latar belakang */
+   z-index: 1; /* Di atas latar belakang animasi */
+}
+
+.academic-calendar ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+.academic-calendar ul li {
+   margin-bottom: 6px; /* Margin lebih kecil */
+   font-size: 16px; /* Ukuran font */
+   color: #333; /* Teks hitam */
+}
+
+/* Efek hover pada daftar */
+.announcements ul li:hover,
+.academic-calendar ul li:hover {
+   color: #FF5722; /* Ubah teks menjadi oranye saat di-hover */
+   font-weight: bold; /* Menebalkan teks saat di-hover */
+}
+
+/* Animasi hover pada kotak */
+.announcements:hover,
+.academic-calendar:hover {
+   transform: translateY(-5px); /* Mengangkat sedikit saat di-hover */
+   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam */
+}
+
+/* Tambahan efek untuk transisi lebih halus */
+@keyframes fadeIn {
+   0% {
+       opacity: 0;
+       transform: translateY(20px);
+   }
+   100% {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+.announcements,
+.academic-calendar {
+   animation: fadeIn 0.5s ease-in-out; /* Animasi saat muncul */
+}
+
+
 .development-time {
    font-family: 'Poppins', sans-serif;
    background: linear-gradient(135deg, #ff8c00, #f85032);
