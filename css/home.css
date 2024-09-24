@@ -334,6 +334,30 @@ header {
    margin-bottom: 30px;
 }
 
+/* Animasi untuk memasukkan elemen ke tampilan */
+@keyframes fadeIn {
+   from {
+       opacity: 0;
+       transform: translateY(20px); /* Gerakan dari bawah */
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+@keyframes slideIn {
+   0% {
+       opacity: 0;
+       transform: translateX(100%); /* Gerakan dari kanan */
+   }
+   100% {
+       opacity: 1;
+       transform: translateX(0);
+   }
+}
+
+/* .class-info Styles */
 .class-info {
    display: flex;
    flex-direction: column;
@@ -341,8 +365,10 @@ header {
    margin: 50px 20px;
    opacity: 1; /* Start with visible class-info section */
    position: relative; /* For positioning the buttons */
+   animation: fadeIn 1.5s ease-in-out; /* Durasi animasi diperpanjang */
 }
 
+/* Carousel Styles */
 .carousel-container {
    position: relative;
    width: 100%;
@@ -352,25 +378,15 @@ header {
 
 .carousel {
    display: flex;
-   transition: transform 0.5s ease-in-out;
-}
-
-@keyframes slideIn {
-   0% {
-       opacity: 0;
-       transform: translateX(100%);
-   }
-   100% {
-       opacity: 1;
-       transform: translateX(0);
-   }
+   transition: transform 0.5s ease-in-out; /* Tambahkan transisi */
 }
 
 .carousel-item {
    min-width: 100%;
    box-sizing: border-box;
-   opacity: 0; /* Start with invisible carousel items */
+   opacity: 0; /* Awalnya item tidak terlihat */
    transition: opacity 0.5s ease; /* Tambahkan transisi untuk opacity */
+   animation: slideIn 1.5s ease-in-out; /* Durasi animasi diperpanjang */
 }
 
 .carousel-item.active {
@@ -383,6 +399,7 @@ header {
    display: block;
 }
 
+/* Carousel Button Styles */
 .carousel-button {
    position: absolute;
    top: 50%;
@@ -403,6 +420,7 @@ header {
    right: 10px;
 }
 
+/* Class Figure Styles */
 .class-figure {
    text-align: center;
    margin: 0;
@@ -420,6 +438,7 @@ header {
    color: #FF5722; /* Oranye pada caption */
    font-size: 18px;
 }
+
 
 .cta-button {
    background: #FF5722; /* Accent color */
