@@ -478,109 +478,95 @@ header {
    font-size: 16px;
 }
 
+
+/* Container for Announcements and Calendar */
 .announcements-container {
-   display: flex; /* Menggunakan flexbox untuk menyusun kotak secara horizontal */
-   justify-content: space-between; /* Jarak antara kedua kotak */
-   flex-wrap: wrap; /* Membungkus kotak pada layar kecil */
-   margin: 40px auto; /* Jarak atas yang lebih besar untuk ruang */
-   width: 90%; /* Lebar 90% dari kontainer */
-   max-width: 800px; /* Lebar maksimum lebih besar */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 800px;
 }
 
-.announcements,
-.academic-calendar {
-   flex: 1; /* Mengizinkan kedua bagian mengambil ruang yang sama */
-   margin: 20px 10px; /* Margin di sekitar setiap bagian */
-   min-width: 220px; /* Lebar minimum yang lebih kecil */
-   padding: 20px; /* Padding di dalam kotak */
-   border-radius: 12px; /* Sudut yang lebih membulat */
-   position: relative; /* Untuk latar belakang animasi */
-   overflow: hidden; /* Menyembunyikan bagian latar belakang yang keluar dari kotak */
-   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan halus */
-   transition: transform 0.3s, box-shadow 0.3s; /* Animasi saat hover */
+/* Announcements and Calendar Cards */
+.announcements, .academic-calendar {
+    flex: 1;
+    margin: 20px 10px;
+    min-width: 220px;
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Latar belakang gambar dengan efek parallax */
-.announcements::before,
-.academic-calendar::before {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-image: url('link-to-your-image.jpg'); /* Ganti dengan link gambar yang diinginkan */
-   background-size: cover; /* Menutupi seluruh area */
-   background-position: center; /* Pusat gambar */
-   transform: translateZ(0); /* Mempercepat rendering untuk parallax */
-   z-index: 0; /* Di belakang konten */
-}
-
-/* Gaya untuk Pengumuman Terbaru */
+/* Announcements Styling */
 .announcements {
-   background: rgba(255, 87, 34, 0.8); /* Gradasi oranye gelap */
-   color: white; /* Teks putih */
+    background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
+    color: white;
 }
 
 .announcements h2 {
-   font-size: 20px; /* Ukuran font */
-   margin-bottom: 10px; /* Margin bawah */
-   font-family: 'Arial', sans-serif; /* Font yang modern */
-   position: relative; /* Untuk teks di atas latar belakang */
-   z-index: 1; /* Di atas latar belakang animasi */
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    z-index: 1;
 }
 
 .announcements ul {
-   list-style-type: none;
-   padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 .announcements ul li {
-   margin-bottom: 6px; /* Margin lebih kecil */
-   font-size: 16px; /* Ukuran font */
+    margin-bottom: 6px;
+    font-size: 16px;
 }
 
-/* Gaya untuk Kalendar Akademik */
+.announcements ul li:hover {
+    color: #FFD54F;
+    font-weight: bold;
+}
+
+/* Academic Calendar Styling */
 .academic-calendar {
-   background: rgba(240, 240, 240, 0.8); /* Latar belakang abu-abu terang */
-   color: #333; /* Teks hitam */
+    background: linear-gradient(135deg, #ECEFF1 0%, #CFD8DC 100%);
+    color: #333;
 }
 
 .academic-calendar h2 {
-   font-size: 20px; /* Ukuran font */
-   color: #FF5722; /* Teks warna oranye */
-   margin-bottom: 10px; /* Margin bawah */
-   font-family: 'Arial', sans-serif; /* Font yang modern */
-   position: relative; /* Untuk teks di atas latar belakang */
-   z-index: 1; /* Di atas latar belakang animasi */
+    font-size: 20px;
+    color: #FF5722;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    z-index: 1;
 }
 
 .academic-calendar ul {
-   list-style-type: none;
-   padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 .academic-calendar ul li {
-   margin-bottom: 6px; /* Margin lebih kecil */
-   font-size: 16px; /* Ukuran font */
-   color: #333; /* Teks hitam */
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #333;
 }
 
-/* Efek hover pada daftar */
-.announcements ul li:hover,
 .academic-calendar ul li:hover {
-   color: #FF5722; /* Ubah teks menjadi oranye saat di-hover */
-   font-weight: bold; /* Menebalkan teks saat di-hover */
+    color: #FF5722;
+    font-weight: bold;
 }
 
-/* Animasi hover pada kotak */
-.announcements:hover,
-.academic-calendar:hover {
-   transform: translateY(-5px); /* Mengangkat sedikit saat di-hover */
-   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam */
+/* Hover Effects */
+.announcements:hover, .academic-calendar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Tambahan efek untuk transisi lebih halus */
+/* Keyframes for Animation */
 @keyframes fadeIn {
    0% {
        opacity: 0;
@@ -592,9 +578,8 @@ header {
    }
 }
 
-.announcements,
-.academic-calendar {
-   animation: fadeIn 0.5s ease-in-out; /* Animasi saat muncul */
+.announcements, .academic-calendar {
+   animation: fadeIn 0.5s ease-in-out;
 }
 
 
@@ -693,17 +678,21 @@ header {
 }
 
 
+/* Footer Styling */
 .footer {
-   background-color: #1e1e1e; /* Warna latar belakang footer yang gelap */
-   color: #f0f0f0; /* Warna teks yang terang */
-   padding: 20px 0;
-   position: relative; /* Agar footer-bottom tetap di bawah */
+   background: linear-gradient(135deg, #1e1e1e, #282828);
+   color: #f0f0f0;
+   padding: 80px 0; /* Tambah padding untuk ukuran lebih besar */
+   position: relative;
+   text-align: center;
    display: flex;
-   flex-direction: column; /* Mengatur arah fleksibel ke kolom */
+   flex-direction: column;
+   align-items: center;
 }
 
 .footer .container {
    max-width: 1200px;
+   width: 90%;
    margin: 0 auto;
    padding: 0 15px;
 }
@@ -712,73 +701,126 @@ header {
    display: flex;
    justify-content: space-between;
    flex-wrap: wrap;
-   margin-bottom: 20px; /* Spasi di bawah footer-content untuk footer-bottom */
-   flex: 1; /* Mengizinkan footer-content untuk mengisi ruang */
+   width: 100%;
+   animation: fadeInScale 1.5s ease-in-out; /* Perpanjang durasi animasi */
 }
 
 .footer-section {
    flex: 1;
-   margin: 10px;
+   margin: 30px; /* Tambah margin untuk membuat kotak lebih besar */
+   min-width: 280px; /* Perbesar ukuran minimum */
+   text-align: left;
+   padding: 20px; /* Tambah padding untuk ruang lebih luas */
+   background-color: rgba(255, 255, 255, 0.05); /* Transparansi untuk menonjolkan kotak */
+   border-radius: 10px; /* Tambah sedikit radius untuk sudut yang lembut */
+   transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.footer-section:hover {
+   transform: translateY(-20px) scale(1.05); /* Perbesar efek hover */
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Perbesar bayangan saat hover */
 }
 
 .footer-section h4 {
-   margin-bottom: 10px;
-   color: #ff6600; /* Warna heading footer yang kontras */
+   color: #ff6600;
+   margin-bottom: 20px;
+   font-size: 26px; /* Perbesar ukuran teks */
+   font-weight: 700;
+   position: relative;
 }
 
 .footer-section p, .footer-section ul {
    margin: 0;
    padding: 0;
    list-style: none;
-}
-
-.footer-section ul {
-   padding-left: 0;
+   line-height: 2; /* Tambah jarak antar baris teks */
 }
 
 .footer-section ul li {
-   margin-bottom: 10px;
+   margin-bottom: 15px; /* Perbesar jarak antar elemen */
 }
 
 .footer-section a {
-   color: #f0f0f0; /* Warna link yang terang */
+   color: #f0f0f0;
    text-decoration: none;
+   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .footer-section a:hover {
-   color: #ff6600; /* Warna link saat hover */
+   color: #ff6600;
+   transform: translateX(8px); /* Lebih besar efek hover */
 }
 
+/* Social Icons */
 .social-icon {
    color: #f0f0f0;
-   font-size: 24px;
-   margin-right: 10px;
-   text-decoration: none;
+   font-size: 30px; /* Perbesar ikon */
+   margin-right: 20px;
+   transition: transform 0.4s ease-in-out, color 0.4s ease-in-out; /* Perpanjang durasi animasi */
 }
 
+.social-icon:hover {
+   color: #ff6600;
+   transform: scale(1.4) rotate(20deg); /* Perbesar efek hover */
+}
+
+/* Footer Bottom */
 .footer-bottom {
+   color: #b0b0b0;
+   border-top: 1px solid #444;
+   padding-top: 15px;
+   margin-top: 30px;
+   width: 100%;
    text-align: center;
-   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
-   border-top: 1px solid #333; /* Tambahkan border untuk pemisah jika diinginkan */
-   padding: 10px 0;
-   background-color: #1e1e1e; /* Warna latar belakang footer-bottom */
+   font-size: 14px;
 }
 
-.footer-bottom p {
-   margin: 0;
-   color: #b0b0b0; /* Warna teks footer bottom yang lebih lembut */
+/* Footer Section Title Underline Animation */
+.footer-section h4::after {
+   content: "";
+   display: block;
+   width: 70px; /* Perbesar ukuran underline */
+   height: 4px;
+   background-color: #ff6600;
+   margin-top: 10px;
+   border-radius: 5px;
+   animation: slideIn 0.8s ease-in-out; /* Perpanjang durasi animasi */
 }
 
+@keyframes slideIn {
+   0% {
+       width: 0;
+   }
+   100% {
+       width: 70px;
+   }
+}
+
+/* Animations */
 @keyframes fadeInScale {
-   from {
-      opacity: 0;
-      transform: scale(0.8);
+   0% {
+       opacity: 0;
+       transform: scale(0.8);
    }
-   to {
-      opacity: 1;
-      transform: scale(1);
+   100% {
+       opacity: 1;
+       transform: scale(1);
    }
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+   .footer-content {
+       flex-direction: column;
+       align-items: center;
+   }
+
+   .footer-section {
+       text-align: center;
+       margin-bottom: 30px;
+   }
+}
+
 
 .modal {
    display: none;
