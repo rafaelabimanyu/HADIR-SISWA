@@ -370,9 +370,12 @@ header {
    min-width: 100%;
    box-sizing: border-box;
    opacity: 0; /* Start with invisible carousel items */
-   animation: slideIn 1s ease-in-out forwards; /* Slide-in animation */
+   transition: opacity 0.5s ease; /* Tambahkan transisi untuk opacity */
 }
 
+.carousel-item.active {
+   opacity: 1; /* Hanya item aktif yang terlihat */
+}
 
 .carousel-item img {
    width: 100%;

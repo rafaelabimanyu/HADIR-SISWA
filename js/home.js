@@ -39,17 +39,21 @@ document.addEventListener("DOMContentLoaded", function () {
         if (totalSlides > 0) {
             currentIndex += step;
 
-            // Mencegah kembali ke slide pertama jika bergerak ke kanan
+            // Mencegah keluar dari batas slide
             if (currentIndex >= totalSlides) {
                 currentIndex = totalSlides - 1; // Tetap di slide terakhir
             } else if (currentIndex < 0) {
-                currentIndex = 0; // Kembali ke slide pertama jika bergerak ke kiri
+                currentIndex = 0; // Kembali ke slide pertama
             }
 
             const offset = -currentIndex * 100;
             const carouselElem = document.querySelector('.carousel');
             if (carouselElem) {
                 carouselElem.style.transform = `translateX(${offset}%)`;
+                // Perbarui opacity item carousel
+                slides.forEach((slide, index) => {
+                    slide.style.opacity = index === currentIndex ? '1' : '0';
+                });
             }
         } else {
             console.error('Carousel items tidak ditemukan.');
