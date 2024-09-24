@@ -314,6 +314,93 @@ header {
    }
 }
 
+/* Kontainer hasil pencarian */
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9; /* Warna latar belakang */
+    border: 1px solid #ccc; /* Border ringan */
+    border-radius: 8px; /* Border melengkung */
+    max-height: 300px; /* Maksimal tinggi untuk hasil pencarian */
+    overflow-y: auto; /* Scroll jika terlalu banyak hasil */
+    z-index: 1000;
+    display: none; /* Tersembunyi secara default */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transition: all 0.3s ease; /* Transisi */
+}
+
+#search-results.active {
+    display: block; /* Tampilkan jika aktif */
+}
+
+/* Tampilan hasil pencarian */
+.search-result-item {
+    padding: 12px 15px; /* Padding untuk item pencarian */
+    cursor: pointer; /* Ganti kursor menjadi pointer */
+    border-bottom: 1px solid #eee; /* Garis bawah antar item */
+    transition: background-color 0.3s, transform 0.2s; /* Transisi saat hover */
+    color: #333; /* Warna teks */
+    font-size: 14px;
+}
+
+/* Warna saat hover */
+.search-result-item:hover {
+    background-color: #ffecb3; /* Latar belakang kuning muda saat hover */
+    transform: scale(1.02); /* Zoom sedikit saat hover */
+}
+
+/* Scrollbar kustom */
+#search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+#search-results::-webkit-scrollbar-thumb {
+    background: #888; /* Warna scrollbar */
+    border-radius: 4px;
+}
+
+#search-results::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Warna scrollbar saat hover */
+}
+
+/* Desain input pencarian */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #ff9800; /* Warna border saat focus */
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3); /* Efek glow saat focus */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #search-results {
+        max-height: 200px;
+    }
+
+    .search-result-item {
+        font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+        padding: 8px 10px;
+    }
+}
+
+mark {
+   background-color: #ffecb3; /* Warna kuning lembut */
+   padding: 0 2px;
+   border-radius: 3px;
+}
+
+
+
+
 .hero {
    background: linear-gradient(135deg, rgba(68, 68, 68, 0.8), rgba(85, 85, 85, 0.8)), url('img/hero-background.jpg') no-repeat center center/cover;
    color: #fff;
@@ -638,6 +725,7 @@ header {
 .development-time p {
    font-size: 20px;
    color: #fff;
+   margin-top: 5px;
    margin: 0;
    position: relative;
    z-index: 1;
@@ -684,6 +772,15 @@ header {
    opacity: 1;
    max-height: 100px;
 }
+
+.time-info-hidden {
+   display: none; /* Sembunyikan elemen */
+}
+
+.show {
+   display: block; /* Tampilkan elemen */
+}
+
 
 @media (max-width: 768px) {
    .development-time {

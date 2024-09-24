@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <div class="logo">
                 <a href="#"><img src="img/logo 1.webp" alt="Logo SMK Prestasi Prima"></a>
@@ -25,8 +25,9 @@
                     <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                 </ul>
                 <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Cari...">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <input type="text" id="search-input" class="search-input" placeholder="Cari...">
+                    <button class="search-btn" id="search-btn"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="search-results"></div>
                 </div>
                 <div class="close-btn"></div>
             </nav>
@@ -36,16 +37,15 @@
         </div>
     </header>
     
-
     <main>
-        <section class="hero">
+        <section class="hero" id="hero">
             <h1>Selamat Datang di Website X PPLG 1</h1>  
             <p>Untuk siswa kelas X PPLG 1</p>
             <p><i class="fas fa-school"></i> SMK Prestasi Prima</p>
             <a href="absensi.html" class="cta-button">Lihat Absensi</a>
         </section>
 
-        <section class="class-info">
+        <section class="class-info" id="class-info">
             <div class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-item">
@@ -64,7 +64,7 @@
             <figcaption class="class-figure">Kelas X PPLG 1 - SMK Prestasi Prima</figcaption>
         </section>
         
-        <section class="info">
+        <section class="info" id="info">
             <div class="info-box">
                 <h2 style="color: #FF5722;">Fitur Utama</h2>
                 <p>Kami menyediakan berbagai fitur untuk memudahkan absensi dan manajemen kehadiran siswa.</p>
@@ -75,13 +75,13 @@
             </div>
         </section>
 
-        <section class="article">
+        <section class="article" id="article-absensi">
             <h2>Pentingnya Absensi</h2>
             <p>Absensi adalah salah satu aspek penting dalam dunia pendidikan. Dengan absensi yang teratur, sekolah dapat memantau kehadiran siswa dan mengambil tindakan yang diperlukan jika ada masalah. Sistem absensi digital memudahkan proses ini, membuatnya lebih efisien dan mudah diakses oleh semua pihak terkait.</p>
             <p>Absensi yang baik juga mencerminkan kedisiplinan siswa dan membantu menciptakan lingkungan belajar yang kondusif. Oleh karena itu, penting bagi setiap siswa untuk selalu memperhatikan kehadiran mereka di kelas.</p>
         </section>
 
-        <section class="article">
+        <section class="article" id="article-motivasi">
             <h2>Motivasi untuk Siswa</h2>
             <p>Hadir tepat waktu di kelas menunjukkan komitmen dan disiplin Anda sebagai siswa. Jadikan kehadiran di sekolah sebagai kebiasaan yang baik, karena setiap hari yang Anda habiskan di kelas membawa Anda lebih dekat pada pencapaian tujuan akademis dan masa depan Anda.</p>
             <p>Ingatlah, absensi bukan sekadar formalitas, tetapi bagian penting dari proses belajar yang membantu Anda untuk terus berkembang. Teruslah termotivasi, berusaha, dan ingat bahwa setiap langkah kecil membawa Anda ke arah yang lebih baik.</p>
@@ -103,7 +103,7 @@
             </div>
         </div>  
 
-        <section class="announcements">
+        <section class="announcements" id="announcements">
             <h2>Pengumuman Terbaru</h2>
             <ul class="announcement-list">
                 <li>1 Oktober: Ujian Tengah Semester dimulai.</li>
@@ -112,7 +112,7 @@
             </ul>
         </section>
 
-        <section class="academic-calendar">
+        <section class="academic-calendar" id="academic-calendar">
             <h2>Kalendar Akademik</h2>
             <ul>
                 <li>Januari: Libur Semester</li>
@@ -125,15 +125,15 @@
         <div class="development-time">
             <p>Klik tombol di bawah untuk melihat waktu pengembangan.</p>
             <button id="time-button" class="development-time-button">Tampilkan Waktu</button>
+            <p id="creation-info" class="time-info-hidden">Website ini dibuat pada 25 Agustus 2024.</p> 
             <p id="time-info" class="time-info-hidden">
                 Website ini telah dikembangkan selama <span id="time-elapsed"></span>.
             </p>
         </div>
         
-        
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section info">
@@ -171,5 +171,13 @@
     </footer>
 
     <script src="js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
+
+
+
+    <!-- 
+    <footer class="footer">
+            
+    -->

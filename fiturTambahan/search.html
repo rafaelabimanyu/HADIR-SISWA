@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search-results {
+    border: 1px solid #ccc;
+    background-color: white;
+    position: absolute; /* Agar hasil pencarian muncul di bawah search bar */
+    z-index: 1000; /* Pastikan hasil pencarian muncul di atas elemen lainnya */
+    width: 100%; /* Mengikuti lebar search bar */
+    display: none; /* Sembunyikan secara default */
+}
+
+.search-results div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-results div:hover {
+    background-color: #f0f0f0; /* Efek hover */
+}
+
+    </style>
+</head>
+<body>
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Cari..." id="searchInput">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+    
+
+    <script>
+        const data = [
+    "Siswa 1",
+    "Siswa 2",
+    "Siswa 3",
+    "Siswa 4",
+    // Tambahkan lebih banyak item yang ingin dicari
+];
+
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", function() {
+    const query = this.value.toLowerCase();
+    searchResults.innerHTML = ""; // Kosongkan hasil pencarian sebelumnya
+    if (query) {
+        const filteredData = data.filter(item => item.toLowerCase().includes(query));
+        filteredData.forEach(item => {
+            const div = document.createElement("div");
+            div.textContent = item;
+            div.onclick = () => {
+                // Lakukan tindakan ketika hasil diklik
+                searchInput.value = item; // Misalnya, set input dengan item yang dipilih
+                searchResults.innerHTML = ""; // Kosongkan hasil pencarian
+                searchResults.style.display = "none"; // Sembunyikan hasil pencarian
+            };
+            searchResults.appendChild(div);
+        });
+        searchResults.style.display = filteredData.length ? "block" : "none"; // Tampilkan hasil jika ada
+    } else {
+        searchResults.style.display = "none"; // Sembunyikan jika input kosong
+    }
+});
+
+    </script>
+</body>
+</html>

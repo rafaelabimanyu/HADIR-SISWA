@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // **Responsive Navbar**
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const closeBtn = document.querySelector('.close-btn');
@@ -19,10 +18,116 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('Element hamburger, navMenu, atau closeBtn tidak ditemukan.');
     }
 
-    // **Inisialisasi Carousel**
-    let currentIndex = 0;
+    const searchInput = document.querySelector('.search-input');
+    const searchResults = document.getElementById('search-results');
 
-    // Menetapkan item pertama sebagai aktif
+    const content = Array.from(document.querySelectorAll('main section.article, main section.info, main section.announcements, main section.academic-calendar'))
+        .map(section => ({
+            title: section.querySelector('h2') ? section.querySelector('h2').innerText : '',
+            id: section.id || section.querySelector('h2').innerText.toLowerCase().replace(/\s+/g, '-'),
+            description: section.innerText.replace(section.querySelector('h2').innerText, '').trim(),
+            element: section
+        }));
+
+    const navbarItems = Array.from(document.querySelectorAll('nav ul li a')).map(link => ({
+        text: link.innerText.toLowerCase(),
+        href: link.href
+    }));
+
+    function performSearch(query) {
+        searchResults.innerHTML = '';
+
+        const navbarMatch = navbarItems.find(item => item.text.includes(query));
+        if (navbarMatch) {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result-item');
+            resultItem.innerHTML = `<strong>${navbarMatch.text}</strong> - Klik untuk pergi ke halaman.`;
+            resultItem.addEventListener('click', () => {
+                window.location.href = navbarMatch.href;
+            });
+
+            searchResults.appendChild(resultItem);
+            searchResults.classList.add('active');
+            return;
+        }
+
+        const results = content.filter(item =>
+            item.title.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query)
+        );
+
+        if (results.length > 0) {
+            results.forEach(item => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('search-result-item');
+                resultItem.innerHTML = `<strong>${item.title}</strong>: ${item.description}`;
+
+                resultItem.addEventListener('click', () => {
+                    const sectionElement = document.getElementById(item.id);
+                    sectionElement.scrollIntoView({ behavior: 'smooth' });
+                    highlightText(sectionElement, query);
+                    searchResults.classList.remove('active');
+                    searchInput.value = '';
+                });
+
+                searchResults.appendChild(resultItem);
+            });
+            searchResults.classList.add('active');
+        } else {
+            searchResults.classList.remove('active');
+        }
+    }
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        performSearch(query);
+    });
+
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const query = this.value.trim().toLowerCase();
+            const navbarMatch = navbarItems.find(item => item.text.includes(query));
+            if (navbarMatch) {
+                window.location.href = navbarMatch.href;
+            } else {
+                performSearch(query);
+            }
+        }
+    });
+
+    function highlightText(section, keyword) {
+        const contentText = section.innerHTML;
+        const highlightedText = contentText.replace(
+            new RegExp(keyword, 'gi'),
+            match => `<mark>${match}</mark>`
+        );
+        section.innerHTML = highlightedText;
+
+        setTimeout(() => {
+            section.innerHTML = contentText;
+        }, 3000);
+    }
+
+    document.addEventListener('click', function (event) {
+        if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    const searchButton = document.getElementById('search-btn');
+    if (searchButton) {
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            const navbarMatch = navbarItems.find(item => item.text.includes(query));
+            if (navbarMatch) {
+                window.location.href = navbarMatch.href;
+            } else {
+                performSearch(query);
+            }
+        });
+    }
+
+    let currentIndex = 0;
     const slides = document.querySelectorAll('.carousel-item');
     if (slides.length > 0) {
         slides[0].classList.add('active');
@@ -35,9 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
             currentIndex += step;
 
             if (currentIndex >= totalSlides) {
-                currentIndex = totalSlides - 1; 
-            } else if (currentIndex < 0) {
                 currentIndex = 0; 
+            } else if (currentIndex < 0) {
+                currentIndex = totalSlides - 1; 
             }
 
             const offset = -currentIndex * 100;
@@ -47,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 slides.forEach((slide, index) => {
                     slide.style.opacity = index === currentIndex ? '1' : '0';
                     if (index === currentIndex) {
-                        slide.classList.add('active'); // Tambahkan animasi saat aktif
+                        slide.classList.add('active');
                     } else {
                         slide.classList.remove('active');
                     }
@@ -73,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error('Element next-slide atau prev-slide tidak ditemukan.');
     }
 
-    // **Fungsi Modal**
     const openModalBtn = document.getElementById('open-modal');
     const closeModalBtn = document.getElementById('close-modal');
     const modal = document.getElementById('modal');
@@ -113,52 +217,63 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // **Fungsi untuk menghitung waktu berjalan**
-    function calculateDevelopmentTime() {
-        const startDate = new Date('2024-08-25T00:00:00');
-        const currentDate = new Date(); 
-        const timeDiff = currentDate - startDate;
+function calculateDevelopmentTime() {
+    const startDate = new Date('2024-08-25T00:00:00');
+    const currentDate = new Date(); 
+    const timeDiff = currentDate - startDate;
 
-        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        const timeElapsed = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+    const timeElapsed = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
 
-        const timeElapsedElem = document.getElementById('time-elapsed');
-        if (timeElapsedElem) {
-            timeElapsedElem.textContent = timeElapsed;
-        }
+    const timeElapsedElem = document.getElementById('time-elapsed');
+    if (timeElapsedElem) {
+        timeElapsedElem.textContent = timeElapsed;
     }
+}
 
-    let timeVisible = false;
+let timeVisible = false;
+let intervalId; // Untuk menyimpan ID interval
 
-    function showTimeElapsed() {
-        const timeInfo = document.getElementById("time-info");
-        const timeButton = document.getElementById("time-button");
-
-        if (!timeInfo || !timeButton) {
-            console.error('Element time-info atau time-button tidak ditemukan.');
-            return;
-        }
-
-        if (!timeVisible) {
-            timeInfo.classList.add('show');
-            timeButton.innerText = "Tutup Waktu";
-        } else {
-            timeInfo.classList.remove('show');
-            timeButton.innerText = "Tampilkan Waktu";
-        }
-
-        timeVisible = !timeVisible;
-    }
-
+function showTimeElapsed() {
+    const timeInfo = document.getElementById("time-info");
+    const creationInfo = document.getElementById("creation-info");
     const timeButton = document.getElementById("time-button");
-    if (timeButton) {
-        timeButton.addEventListener("click", showTimeElapsed);
-    } else {
-        console.error('Element time-button tidak ditemukan.');
+
+    if (!timeInfo || !timeButton || !creationInfo) {
+        console.error('Element time-info, creation-info, atau time-button tidak ditemukan.');
+        return;
     }
 
-    calculateDevelopmentTime();
-});
+    if (!timeVisible) {
+        timeInfo.classList.add('show'); // Menampilkan waktu
+        creationInfo.classList.add('show'); // Menampilkan informasi pembuatan
+        timeButton.innerText = "Tutup Waktu";
+
+        // Mulai menghitung waktu berjalan
+        if (!intervalId) { // Hanya mulai jika belum ada interval yang berjalan
+            intervalId = setInterval(calculateDevelopmentTime, 1000);
+        }
+    } else {
+        timeInfo.classList.remove('show'); // Menyembunyikan waktu
+        creationInfo.classList.remove('show'); // Menyembunyikan informasi pembuatan
+        timeButton.innerText = "Lihat Waktu";
+        clearInterval(intervalId); // Hentikan interval
+        intervalId = null; // Reset intervalId
+    }
+    timeVisible = !timeVisible; // Toggle status
+}
+
+const timeButton = document.getElementById("time-button");
+if (timeButton) {
+    timeButton.addEventListener("click", showTimeElapsed);
+} else {
+    console.error('Element time-button tidak ditemukan.');
+}
+}); 
+
+
+//
